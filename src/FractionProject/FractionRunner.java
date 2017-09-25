@@ -24,7 +24,7 @@ public class FractionRunner {
 		System.out.print("Two Thirds = ");
 		System.out.println(f2);
 		Fraction sum = f1.add(f2);
-		System.out.println(f1 + " + " + f2 + " = " + sum); // this should have spaces
+		System.out.println(f1 + " + " + f2 + " = " + sum);
 
 		f2 = new Fraction(1, 2);
 		sum = f1.add(f2);
