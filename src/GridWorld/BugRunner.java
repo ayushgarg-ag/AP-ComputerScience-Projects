@@ -15,9 +15,13 @@ package GridWorld;
  * @author Cay Horstmann
  */
 
+import info.gridworld.actor.Actor;
 import info.gridworld.actor.ActorWorld;
 import info.gridworld.actor.Bug;
 import info.gridworld.actor.Rock;
+import info.gridworld.grid.BoundedGrid;
+import info.gridworld.grid.Grid;
+import info.gridworld.grid.UnboundedGrid;
 
 /**
  * This class runs a world that contains a bug and a rock, added at random
@@ -31,9 +35,17 @@ public class BugRunner
 {
     public static void main(String[] args)
     {
-        ActorWorld world = new ActorWorld();
+    	Grid<Actor> grid = new UnboundedGrid<Actor>();
+    	ActorWorld world = new ActorWorld (grid);
+//    	Grid<Actor> grid = new BoundedGrid<Actor>(20, 40);
+//    	ActorWorld world = new ActorWorld (grid);
+//    	ActorWorld world = new ActorWorld();
+        MyActor pat = new MyActor ();
         world.add(new Bug());
+        world.add(new LeftyBug());
         world.add(new Rock());
+        world.add(new Actor());
+        world.add(pat);
         world.show();
     }
 }
