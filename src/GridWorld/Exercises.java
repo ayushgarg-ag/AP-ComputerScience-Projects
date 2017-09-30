@@ -15,20 +15,18 @@ public class Exercises
 {
     public static void main(String[] args)
     {
-    	Grid<Actor> grid = new UnboundedGrid<Actor>();
-    	ActorWorld world = new ActorWorld (grid);
-//    	Grid<Actor> grid = new BoundedGrid<Actor>(20, 40);
+//    	Grid<Actor> grid = new UnboundedGrid<Actor>();
 //    	ActorWorld world = new ActorWorld (grid);
+    	Grid<Actor> grid = new BoundedGrid<Actor>(20, 40);
+    	ActorWorld world = new ActorWorld (grid);
 //    	ActorWorld world = new ActorWorld();
 //        MyActor pat = new MyActor ();
 //        world.add(new CircleBug(4));
 //        world.add(new SpiralBug(4));
-        world.add(new ZBug(4));
+//        world.add(new ZBug(4));
+        world.add(new DancingBug());
 
 
-//        world.add(new LeftyBug());
-//        world.add(new Rock());
-//        world.add(new Actor());
 //        world.add(pat);
         world.show();
     }

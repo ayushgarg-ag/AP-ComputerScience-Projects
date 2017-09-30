@@ -1,6 +1,9 @@
 package GridWorld;
 
+import java.awt.Color;
+
 import info.gridworld.actor.Bug;
+import info.gridworld.grid.Location;
 
 /**
  * A <code>BoxBug</code> traces out a square "box" of a given size. <br />
@@ -21,14 +24,16 @@ public class ZBug extends Bug
         steps = 0;
         sideLength = length;
         seg = 1;
+        
     }
-
+    
     /**
      * Moves to the next location of the square.
      */
     public void act()
     {
-        if (steps < sideLength && canMove())
+//    	setDirection(Location.SOUTHWEST);
+    	if (steps < sideLength && canMove())
         {
             move();
             steps++;
