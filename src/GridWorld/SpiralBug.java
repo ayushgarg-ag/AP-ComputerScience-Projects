@@ -17,6 +17,8 @@
  * @author Barbara Cloud Wells
  */
 package GridWorld;
+import java.awt.Color;
+
 import info.gridworld.actor.Bug;
 
 /**
@@ -34,6 +36,7 @@ public class SpiralBug extends Bug
      */
     public SpiralBug(int length)
     {
+		setColor (Color.GREEN);
         steps = 0;
         sideLength = length;
     }

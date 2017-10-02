@@ -1,5 +1,7 @@
 package GridWorld;
 
+import java.awt.Color;
+
 import info.gridworld.actor.Bug;
 
 /**
@@ -8,6 +10,7 @@ import info.gridworld.actor.Bug;
  */
 public class CircleBug extends Bug
 {
+
     private int steps;
     private int sideLength;
 
@@ -17,7 +20,8 @@ public class CircleBug extends Bug
      */
     public CircleBug(int length)
     {
-        steps = 0;
+    	setColor (Color.MAGENTA);
+    	steps = 0;
         sideLength = length;
     }
 

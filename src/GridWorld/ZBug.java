@@ -21,10 +21,11 @@ public class ZBug extends Bug
      */
     public ZBug(int length)
     {
+		setColor (Color.RED);
         steps = 0;
         sideLength = length;
         seg = 1;
-        
+    	setDirection(90);        
     }
     
     /**
@@ -32,7 +33,6 @@ public class ZBug extends Bug
      */
     public void act()
     {
-//    	setDirection(Location.SOUTHWEST);
     	if (steps < sideLength && canMove())
         {
             move();
@@ -53,6 +53,7 @@ public class ZBug extends Bug
             	turn();
             	turn();
             	turn();
+            	move();
             	seg++;
             	steps = 0;        		
         	}
