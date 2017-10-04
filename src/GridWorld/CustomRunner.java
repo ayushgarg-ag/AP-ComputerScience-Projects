@@ -31,7 +31,7 @@ import info.gridworld.grid.UnboundedGrid;
  * BoxBugRunner (in the boxBug folder) for an example. <br />
  * This class is not tested on the AP CS A and AB exams.
  */
-public class CustomBugRunner
+public class CustomRunner
 {
     public static void main(String[] args)
     {
@@ -40,12 +40,9 @@ public class CustomBugRunner
 //    	Grid<Actor> grid = new BoundedGrid<Actor>(20, 40);
 //    	ActorWorld world = new ActorWorld (grid);
 //    	ActorWorld world = new ActorWorld();
-//        MyActor pat = new MyActor ();
-        world.add(new CustomBug(4));
-//        world.add(new LeftyBug());
-//        world.add(new Rock());
-//        world.add(new Actor());
-//        world.add(pat);
+        CustomBug pat = new CustomBug(10);
+//        world.add(new CustomBug(10));
+        world.add(pat);
         world.show();
     }
 }
