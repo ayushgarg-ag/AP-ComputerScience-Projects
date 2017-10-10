@@ -14,10 +14,12 @@ public class Runner {
 			try {
 				val = reader.nextInt();
 			} catch (Exception e) {
-				String wrong = reader.nextLine();
-				System.out.println("You were supposed to enter an integer! \nYou entered: " + wrong + "\n" + e);
+//				String wrong = reader.nextLine();
+//				System.out.println("You were supposed to enter an integer! \nYou entered: " + wrong + "\n" + e);
 				val = -1;
 			}
 		} while ((val < 0) || (val > 100));
+		
+		
 	}
 }
