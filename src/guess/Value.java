@@ -35,14 +35,17 @@ public class Value {
 	/**
 	 * Compares the values of the different Value objects
 	 * @param otherVal another Value
-	 * @return boolean (true or false)
+	 * @return int
 	 */	
-	public boolean equals (Value otherVal) {
-		if (value == otherVal.getValue()) {
-			return true;
+	public int compareTo (Value o) {
+		if (this.getValue() == o.getValue()) {
+			return 0;
+		}
+		else if (this.getValue() < o.getValue()) {
+			return -1;
 		}
 		else {
-			return false;
+			return 1;
 		}
 	}
 	
