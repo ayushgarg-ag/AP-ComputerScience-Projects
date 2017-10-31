@@ -25,15 +25,16 @@ public class Runner {
 //				count = 11;
 //			}
 //		} while (count > 10 || count <= 0);
-		
+		boolean stop = false;
+		int count = 0;
 		double num;
-		for (int i = 0; i < grades.length; i++) {			
+		for (int i = 0; (i < grades.length) && (stop==false); i++) {			
 			do {
 				System.out.println("Enter test scores");
 				try {
 					num = reader.nextDouble();
 					if (num < 0.0) {
-						
+						stop = true;
 					}
 					else if (num > 100.0) {
 						System.out.println("That is out of range!");
@@ -42,21 +43,25 @@ public class Runner {
 				catch (Exception e) {
 					String wrong = reader.nextLine();
 					System.out.println("You were supposed to enter a number! \nYou entered: " + wrong + "\n" + e);
-					num = -1.0;
+					num = 101.0;
 				}
-			} while ((num < 0.0) || (num > 100.0));
+			} while ((num > 100.0));
 			
 //			if (num > 0.0) {
-				grades[i] = num;				
+
+			if (stop == false) {
+				grades[i] = num;
+				count++;
+			}
 //			}
 		}
 		System.out.println(Arrays.toString(grades));
 		double [] copy = copier (grades);
 		int length = copy.length;
-		System.out.println("The maximum score is: " + max(copy, length));
-		System.out.println("The minimum score is: " + min(copy, length));
-		System.out.println("The mean is: " + mean(copy, length));
-		System.out.println("The median is: " + median(copy, length));
+		System.out.println("The maximum score is: " + max(copy, count));
+		System.out.println("The minimum score is: " + min(copy, count));
+		System.out.println("The mean is: " + mean(copy, count));
+		System.out.println("The median is: " + median(copy, count));
 		
 
 	}
@@ -95,8 +100,9 @@ public class Runner {
 		return mean;
 	}
 	
+	//sort double array
 	public static double median (double[] arr, int size) {
-		Arrays.sort (arr);
+		Arrays.sort (arr, 0, size);
 		double median;
 		if (size % 2 == 0) {
 			double first = arr[size/2];
