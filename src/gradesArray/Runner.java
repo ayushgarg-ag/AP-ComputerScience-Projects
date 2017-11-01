@@ -8,27 +8,12 @@ public class Runner {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner reader = new Scanner(System.in);
-//		int count;
 		double grades[] = new double[10];
-//		do {
-//			System.out.println("Enter how many test scores (<=10)");
-//
-//			try {
-//				count = reader.nextInt();
-//				if (count > 10 || count <= 0) {
-//					System.out.println("That does not work!");
-//				}
-//			}
-//			catch (Exception e) {
-//				String wrong = reader.nextLine();
-//				System.out.println("You were supposed to enter a number! \nYou entered: " + wrong + "\n" + e);
-//				count = 11;
-//			}
-//		} while (count > 10 || count <= 0);
 		boolean stop = false;
 		int count = 0;
 		double num;
-		for (int i = 0; (i < grades.length) && (stop==false); i++) {			
+		
+		for (int i = 0; (i < grades.length) && (stop == false); i++) {			
 			do {
 				System.out.println("Enter test scores");
 				try {
@@ -47,23 +32,17 @@ public class Runner {
 				}
 			} while ((num > 100.0));
 			
-//			if (num > 0.0) {
-
 			if (stop == false) {
 				grades[i] = num;
 				count++;
 			}
-//			}
 		}
 		System.out.println(Arrays.toString(grades));
 		double [] copy = copier (grades);
-		int length = copy.length;
 		System.out.println("The maximum score is: " + max(copy, count));
 		System.out.println("The minimum score is: " + min(copy, count));
 		System.out.println("The mean is: " + mean(copy, count));
 		System.out.println("The median is: " + median(copy, count));
-		
-
 	}
 	
 	public static double[] copier (double[] arr) {
@@ -100,7 +79,6 @@ public class Runner {
 		return mean;
 	}
 	
-	//sort double array
 	public static double median (double[] arr, int size) {
 		Arrays.sort (arr, 0, size);
 		double median;
@@ -114,6 +92,4 @@ public class Runner {
 		}
 		return median;
 	}
-	
-
 }
