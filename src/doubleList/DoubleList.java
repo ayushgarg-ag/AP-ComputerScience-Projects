@@ -86,6 +86,13 @@ public class DoubleList {
 		return str;
 	}
 	
+	/**
+	 * Removes an item from the end of the List
+	 * @return the value of the item that was removed
+	 * Precondition: list is not full
+	 * Postcondition: item is removed from the end of the list
+	 * @throws IndexOutOfBoundsException if list empty
+	 */	
 	public double remove() {
 		if (mySize == 0) {
 			throw new IndexOutOfBoundsException("The DoubleList is empty.");
@@ -95,13 +102,97 @@ public class DoubleList {
 			return myList[mySize];
 		}
 	}
-	
+
+	/**
+	 * Returns the position of the first occurrence of the given value in the DoubleList
+	 * @param d the double value you are searching for
+	 * @return index (integer) of the first occurrence of the given value
+	 */
 	public int indexOf(double d) {
 		for (int i = 0; i < mySize; i++) {
-			if (i == d) {
+			if (myList[i] == d) {
 				return i;
 			}
 		}
 		return -1;
 	}
+	
+	/**
+	 * Adds up all the values in a list
+	 * @return the sum of the list if it is not empty
+	 */	
+	public double sum() {
+		int sum = 0;
+		if (mySize == 0) {
+			return 0;
+		}
+		for (int i = 0; i < mySize; i++) {
+			sum += myList[i];
+		}
+		return sum;
+	}
+	
+	/**
+	 * Calculates the average value in the list
+	 * @return the average of all items in the effective list
+	 * Precondition: list is not empty
+	 * @throws IndexOutOfBoundsException if list empty
+	 */	
+	public double mean () {
+		double sum = 0;
+		if (mySize == 0) {
+			throw new IndexOutOfBoundsException("The DoubleList is empty.");
+		}
+		for (int i = 0; i < mySize; i++) {
+			sum += myList[i];
+		}
+		double mean = sum/(mySize);
+		return mean;
+	}
+
+	/**
+	 * Returns the largest item in the effective list
+	 * @return the largest item in the effective list
+	 * Precondition: list is not empty
+	 * @throws IndexOutOfBoundsException if list empty
+	 */	
+	public double maximum () {
+		double max = myList[0];
+		if (mySize == 0) {
+			throw new IndexOutOfBoundsException("The DoubleList is empty.");
+		}
+		for (int i = 0; i < mySize; i++) {
+			if (myList[i] > max) {
+				max = myList[i];
+			}
+		}
+		return max;
+	}
+
+	/**
+	 * Returns the smallest item in the effective list
+	 * @return the smallest item in the effective list
+	 * Precondition: list is not empty
+	 * @throws IndexOutOfBoundsException if list empty
+	 */	
+	public double minimum () {
+		double min = myList[0];
+		if (mySize == 0) {
+			throw new IndexOutOfBoundsException("The DoubleList is empty.");
+		}
+		for (int i = 0; i < mySize; i++) {
+			if (myList[i] < min) {
+				min = myList[i];
+			}
+		}
+		return min;
+	}
+
+	public double get(int i) {
+		if (mySize < 0 || i > mySize ) {
+			throw new IndexOutOfBoundsException("The index is out of bounds.");
+		}
+		return myList[i];
+	}
+	
 }

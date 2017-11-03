@@ -38,21 +38,27 @@ public class ListTester {
 		System.out.println ("max size: " + aList3.maxSize());
 		System.out.println ("List is: " + aList3+"\n");
 		
-//		double[] arr2 = new double[5];
-//		for (int i = 0; i < arr2.length; i++) {
-//			arr2[i] = (double)i;
-//		}
-//		System.out.println ("Testing Remove Method");
-//		DoubleList aList4 = new DoubleList (arr2);
-//		double r;
-//
-//		for (int i = 0; i <= arr2.length; i++) {
-//			r = aList4.remove();
-//			System.out.println("Removed Value: "+r);
-//		}
-//		System.out.println ("size: " + aList4.size());
-//		System.out.println ("max size: " + aList4.maxSize());
-//		System.out.println ("List is: " + aList4 + "\n");
+		double[] arr2 = new double[5];
+		for (int i = 0; i < arr2.length; i++) {
+			arr2[i] = (double)i;
+		}
+		System.out.println ("Testing Remove Method");
+		DoubleList aList4 = new DoubleList (arr2);
+		double r;
+
+		for (int i = 0; i < arr2.length; i++) {
+			r = aList4.remove();
+			System.out.println("Removed Value: "+r);
+		}
+		try {
+			   aList4.remove();  // generates an Exception
+			}
+			catch (Exception e) {
+			   System.out.println ("Error: " + e);
+			}
+		System.out.println ("size: " + aList4.size());
+		System.out.println ("max size: " + aList4.maxSize());
+		System.out.println ("List is: " + aList4 + "\n");
 
 		
 		System.out.println ("Testing indexOf Method");
@@ -60,8 +66,11 @@ public class ListTester {
 		System.out.println ("First occurence of 1.0 is " + aList3.indexOf(1.0));
 		System.out.println ("First occurence of 2.0 is " + aList3.indexOf(2.0));
 		
-		
-		
-		
+		System.out.println ("\nList is: " + aList3);
+		System.out.println ("Testing sum Method");
+		System.out.println ("The sum of aList3 is " + aList3.sum() + "\n");
+
+		System.out.println ("Testing mean Method");
+		System.out.println ("The mean of aList3 is " + aList3.mean());
 	}
 }
