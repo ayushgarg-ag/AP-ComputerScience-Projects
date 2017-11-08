@@ -188,11 +188,85 @@ public class DoubleList {
 		return min;
 	}
 
-	public double get(int i) {
-		if (mySize < 0 || i > mySize ) {
+	public double get(int index) {
+		if (mySize < 0 || index >= mySize ) {
 			throw new IndexOutOfBoundsException("The index is out of bounds.");
 		}
-		return myList[i];
+		return myList[index];
 	}
 	
+	public void set(int index, double d) {
+		if (index >= mySize)  {
+			throw new IndexOutOfBoundsException("The index is not in the effective size.");			
+		}
+			myList[index] = d;
+	}
+	
+	public void add (int index, double d) {
+		if (index > mySize) {
+			throw new IndexOutOfBoundsException("The specified index is out of bounds.");
+		}
+		
+		if (mySize > maxSize()) {
+			throw new IndexOutOfBoundsException("There is no room in the array.");
+//			throw new RejectedExecutionException("There is no room in the array.");
+		}
+		
+		for (int i = index; i < mySize - index; i++) {
+			myList[i + 1] = myList[i];
+		}
+		myList[index] = d;
+	}
+	
+	public void remove(int index) {
+		if (index >= mySize) {
+			throw new IndexOutOfBoundsException("The specfied index is out of bounds.");
+		}
+		for (int i = index; i < mySize - index; i--) {
+			myList[i] = myList[i+1];
+		}
+		mySize--;			
+	}
+	
+	public void clear() {
+		for (int i = 0; i < mySize; i++) {
+			myList[i] = 0.0;
+		}
+	}
+	
+	public boolean equals(DoubleList o) {
+		boolean same = true;
+		for (int i = 0; i < mySize; i++) {
+			if (myList[i] != o.get(i)) {
+				return false;
+			}
+		}
+		return same;
+	}
+	
+	public boolean isEmpty() {
+		if (mySize == 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public double[] toArray() {
+		double[] arr = new double[mySize]; 
+		for (int i = 0; i < mySize; i++) {
+			arr[i] = myList[i];
+		}
+		return arr;
+	}
+	
+	public boolean contains(double d) {
+		for (int i = 0; i < mySize; i++) {
+			if (myList[i] == d) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

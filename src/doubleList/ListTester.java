@@ -51,11 +51,11 @@ public class ListTester {
 			System.out.println("Removed Value: "+r);
 		}
 		try {
-			   aList4.remove();  // generates an Exception
-			}
-			catch (Exception e) {
-			   System.out.println ("Error: " + e);
-			}
+		   aList4.remove();  // generates an Exception
+		}
+		catch (Exception e) {
+		   System.out.println ("Error: " + e);
+		}
 		System.out.println ("size: " + aList4.size());
 		System.out.println ("max size: " + aList4.maxSize());
 		System.out.println ("List is: " + aList4 + "\n");
@@ -63,14 +63,68 @@ public class ListTester {
 		
 		System.out.println ("Testing indexOf Method");
 		System.out.println ("First occurence of 0.0 is " + aList3.indexOf(0.0));
-		System.out.println ("First occurence of 1.0 is " + aList3.indexOf(1.0));
 		System.out.println ("First occurence of 2.0 is " + aList3.indexOf(2.0));
+		System.out.println ("First occurence of 5.0 is " + aList3.indexOf(5.0));
 		
 		System.out.println ("\nList is: " + aList3);
 		System.out.println ("Testing sum Method");
-		System.out.println ("The sum of aList3 is " + aList3.sum() + "\n");
+		System.out.println ("The sum of aList3 is " + aList3.sum());
+		System.out.println ("The sum of aList4 is " + aList4.sum());
 
-		System.out.println ("Testing mean Method");
+		
+		System.out.println ("\nTesting mean Method");
 		System.out.println ("The mean of aList3 is " + aList3.mean());
+		System.out.println ("The mean of aList4 is ");
+		try {
+			aList4.mean();  // generates an Exception
+		}
+		catch (Exception e) {
+		   System.out.println ("Error: " + e);
+		}
+		
+		System.out.println ("\nTesting maximum Method");
+		System.out.println ("The maximum of aList3 is " + aList3.maximum());
+		System.out.println ("The maximum of aList4 is ");
+		try {
+			aList4.maximum();  // generates an Exception
+		}
+		catch (Exception e) {
+		   System.out.println ("Error: " + e);
+		}
+		
+		System.out.println ("\nTesting minimum Method");
+		System.out.println ("The minimum of aList3 is " + aList3.minimum());
+		System.out.println ("The minimum of aList4 is ");
+		try {
+			aList4.minimum();  // generates an Exception
+		}
+		catch (Exception e) {
+		   System.out.println ("Error: " + e);
+		}
+
+		System.out.println ("\nTesting get Method");
+		System.out.println ("The value at index 1 is " + aList3.get(1));
+		System.out.println ("The value at index 5 is ");
+		try {
+			aList3.get(5);  // generates an Exception
+		}
+		catch (Exception e) {
+		   System.out.println ("Error: " + e);
+		}
+		
+		System.out.println ("\nTesting set Method");
+		System.out.println ("Sets the value at index 0 to 1.0");
+		aList3.set(0, 1.0);
+		System.out.println ("List is: " + aList3+"\n");
+
+		System.out.println ("Sets the value at index 6 to 6.0");
+		try {
+			aList3.set(6, 6.0);  // generates an Exception
+		}
+		catch (Exception e) {
+		   System.out.println ("Error: " + e);
+		}
+
+
 	}
 }
