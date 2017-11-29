@@ -280,6 +280,9 @@ public class DoubleList {
 	 * @return a boolean depending on whether the passed DoubleList contains identical item to "this"  DoubleList
 	 */
 	public boolean equals(DoubleList o) {
+		if (mySize != o.size()) {
+			return false;
+		}
 		for (int i = 0; i < mySize; i++) {
 			if (myList[i] != o.get(i)) {
 				return false;
