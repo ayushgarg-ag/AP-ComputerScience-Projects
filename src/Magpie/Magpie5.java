@@ -13,7 +13,7 @@ import java.util.Random;
  * @version April 2012
  *
  */
-public class Magpie4 {
+public class Magpie5 {
 	/**
 	 * Get a default greeting
 	 * 
@@ -191,30 +191,6 @@ public class Magpie4 {
 	}
 
 	/**
-	 * Pick a default response to use if nothing else fits.
-	 * 
-	 * @return a non-committal string
-	 */
-	private String getRandomResponse() {
-		final int NUMBER_OF_RESPONSES = 4;
-		double r = Math.random();
-		int whichResponse = (int) (r * NUMBER_OF_RESPONSES);
-		String response = "";
-
-		if (whichResponse == 0) {
-			response = "Interesting, tell me more.";
-		} else if (whichResponse == 1) {
-			response = "Hmmm.";
-		} else if (whichResponse == 2) {
-			response = "Do you really think so?";
-		} else if (whichResponse == 3) {
-			response = "You don't say.";
-		}
-
-		return response;
-	}
-
-	/**
 	 * Take a statement with "I want <something>." and transform it into "Would you really be happy if you had <something>?"
 	 * 
 	 * @param statement
@@ -260,5 +236,26 @@ public class Magpie4 {
 		return "Do you really like " + restOfStatement + "?";
 	}
 	
+
+	/**
+	 * Pick a default response to use if nothing else fits.
+	 * @return a non-committal string
+	 */
+	private String getRandomResponse ()
+	{
+		Random r = new Random ();
+		return randomResponses [r.nextInt(randomResponses.length)];
+	}
+	
+	private String [] randomResponses = {
+			"Interesting, tell me more",
+			"Hmmm.",
+			"Do you really think so?",
+			"You don't say.",
+			"Wow that is so cool.",
+			"That is amazing",
+			"Great!",
+			"Fantastic!"
+	};
 
 }
