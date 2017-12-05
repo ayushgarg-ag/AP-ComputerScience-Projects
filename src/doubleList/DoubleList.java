@@ -1,5 +1,7 @@
 package doubleList;
 
+import java.util.Arrays;
+
 /**
  * DoubleList is a class that behaves much like a variable-sized array – a runner will be able to create a new empty DoubleList and then add items to the list, access the values in the list, change items in the list, get the effective size of the list, determine the maximum value, the minimum value, etc.
  * @author agarg01
@@ -328,5 +330,27 @@ public class DoubleList {
 			}
 		}
 		return false;
+	}
+	
+	public void sort () {
+		Arrays.sort(myList, 0, mySize);
+	}
+	
+	public int binarySearch (double val) {
+		int left = 0;
+		int right = mySize - 1;
+		while (left <= right) {
+			int mid = (left + right)/2;
+			if (myList[mid] == val) {
+				return mid;
+			}
+			else if (myList[mid] < val) {
+				left = mid + 1;
+			}
+			else {
+				right = mid - 1;
+			}
+		}
+		return -1;
 	}
 }
