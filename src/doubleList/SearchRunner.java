@@ -17,10 +17,10 @@ public class SearchRunner {
 		System.out.println("item " + val + " is located at position: " + loc1 + " (linear)");
 		int loc2 = lst.binarySearch(val);
 		System.out.println("item " + val + " is located at position: " + loc2 + " (binary)");
-		
+
 		DoubleList list;
 
-		for (int n = 1000; n < 10000; n+=1000) {
+		for (int n = 1000; n < 10000; n += 1000) {
 			long time[] = new long[n];
 			list = new DoubleList(n);
 			int sum = 0;
@@ -38,36 +38,34 @@ public class SearchRunner {
 			for (int i = 0; i < time.length - 1; i++) {
 				sum += time[i];
 			}
-			
 			double average = sum / n;
-			list.sort();
 			
-//			long timeB = 0;
-//			DoubleList list2 = new DoubleList(n);
-//			for (int i = 0; i < list2.size() - 1; i++) {
-//				list2.add(Math.random());
-//			}
-//			for (int i = 0; i < list2.size() - 1; i++) {
-//				long startTime = System.nanoTime();
-//				list2.indexOf(n);
-//				long endTime = System.nanoTime();
-//				timeB = endTime - startTime;		
-//			}
-//			double averageB = timeB / n;
-			System.out.println(n + "\t" + average + "\t");
-//		}
+			/////////////////////////////
+			list.sort();
+			DoubleList listB;
+			long timeB[] = new long[n];
+			listB = new DoubleList(n);
+			int sumB = 0;
+			for (int i = 0; i < n; i++) {
+				listB.add(Math.random());
+			}
 
-//		for (int n = 1000; n < 10000; n+=1000) {
-//			DoubleList list2 = new DoubleList(n);
-//			for (int i = 0; i < list2.size() - 1; i++) {
-//				long startTime = System.nanoTime();
-//				list.indexOf(n);
-//				long endTime = System.nanoTime();
-//				time = endTime - startTime;		
-//			}
-//			double average = time / n;
-//		}
-		
-	}
+			for (int i = 0; i < n; i+=2) {
+				long startTimeB = System.nanoTime();
+				list.binarySearch(n);
+				long endTimeB = System.nanoTime();
+				long elapsedB = endTimeB - startTimeB;
+				timeB[i] = elapsedB;
+			}
+			for (int i = 0; i < time.length - 1; i++) {
+				sumB += timeB[i];
+			}
+
+			double averageB = sumB / n;
+			list.sort();
+
+			System.out.println(n + "\t" + average + "\t" + averageB);
+
+		}
 	}
 }
