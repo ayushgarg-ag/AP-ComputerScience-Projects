@@ -172,7 +172,7 @@ public class ObjectList <E> {
 	 * @throws IndexOutOfBoundsException if list is full or if the index is out of bounds
 	 */
 	public E get(int index) {
-		if (mySize < 0 || index >= mySize ) {
+		if (mySize < 0 || index >= mySize || index < 0) {
 			throw new IndexOutOfBoundsException("The index is out of bounds.");
 		}
 		return myList[index];
@@ -187,7 +187,7 @@ public class ObjectList <E> {
 	 * @throws IndexOutOfBoundsException if the index is out of the effective size
 	 */
 	public void set(int index, E o) {
-		if (index >= mySize)  {
+		if (index >= mySize || index < 0)  {
 			throw new IndexOutOfBoundsException("The index is not in the effective size.");			
 		}
 			myList[index] = o;
@@ -206,7 +206,7 @@ public class ObjectList <E> {
 			throw new IndexOutOfBoundsException("There is no room in the array.");
 		}
 		
-		if (index >= mySize) {
+		if (index >= mySize || index < 0) {
 			throw new IndexOutOfBoundsException("The specified index is out of bounds.");
 		}
 		
@@ -225,10 +225,10 @@ public class ObjectList <E> {
 	 * @throws IndexOutOfBoundsException if the index is out of bounds
 	 */
 	public void remove(int index) {
-		if (index >= mySize) {
+		if (index >= mySize || index < 0) {
 			throw new IndexOutOfBoundsException("The specfied index is out of bounds.");
 		}
-		for (int i = index; i < mySize; i++) {
+		for (int i = index; i < mySize-1; i++) {
 			myList[i] = myList[i+1];
 		}
 		mySize--;			
