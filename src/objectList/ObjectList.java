@@ -8,16 +8,16 @@ import java.util.Arrays;
  * 10/31
  * Extensions: toArray method and contain method
  */
-public class ObjectList {
+public class ObjectList <E> {
 	
-	private Object[] myList;
+	private E[] myList;
 	private int mySize;
 	
 	/**
 	 * Creates a MyList with an empty array of Objects of size 20, a mySize with a value of 0
 	 */
 	public ObjectList() {
-		myList = new Object[20];
+		myList = (E[]) new Object[20];
 		mySize = 0;
 	}
 	
@@ -27,7 +27,7 @@ public class ObjectList {
 	 * Precondition: the specified value is not 0
 	 */
 	public ObjectList (int i) {
-		myList = new Object[i];
+		myList = (E[]) new Object[i];
 		mySize = 0;
 	}
 	
@@ -36,11 +36,11 @@ public class ObjectList {
 	 * @param arr: a Object array that is added to the Object List
 	 * Postcondition: the values from the passed array are added to the ObjectList
 	 */
-	public ObjectList (Object[] arr) {
-		myList = new Object[arr.length + 20];
+	public ObjectList (E[] arr) {
+		myList = (E[]) new Object[arr.length + 20];
 		mySize = 0;
 		
-		for (Object arrVal: arr) {
+		for (E arrVal: arr) {
 			this.add(arrVal);
 		}
 	}
@@ -68,7 +68,7 @@ public class ObjectList {
 	 * Postcondition: item is added to the end of the list
 	 * @throws RuntimeException if list is full
 	*/
-	public void add (Object o) {
+	public void add (E o) {
 		if (mySize < maxSize()) {
 
 			myList[mySize] = o;
@@ -102,7 +102,7 @@ public class ObjectList {
 	 * Postcondition: item is removed from the end of the list
 	 * @throws IndexOutOfBoundsException if list empty
 	 */	
-	public Object remove() {
+	public E remove() {
 		if (mySize == 0) {
 			throw new IndexOutOfBoundsException("The ObjectList is empty.");
 		}
@@ -117,7 +117,7 @@ public class ObjectList {
 	 * @param d the Object value you are searching for
 	 * @return index (integer) of the first occurrence of the given value
 	 */
-	public int indexOf(Object o) {
+	public int indexOf(E o) {
 		for (int i = 0; i < mySize; i++) {
 			if (myList[i].equals(o)) {
 				return i;
@@ -171,7 +171,7 @@ public class ObjectList {
 	 * @return the value at the provided index
 	 * @throws IndexOutOfBoundsException if list is full or if the index is out of bounds
 	 */
-	public Object get(int index) {
+	public E get(int index) {
 		if (mySize < 0 || index >= mySize ) {
 			throw new IndexOutOfBoundsException("The index is out of bounds.");
 		}
@@ -186,7 +186,7 @@ public class ObjectList {
 	 * Postcondition: the specified value is set at the specified index
 	 * @throws IndexOutOfBoundsException if the index is out of the effective size
 	 */
-	public void set(int index, Object o) {
+	public void set(int index, E o) {
 		if (index >= mySize)  {
 			throw new IndexOutOfBoundsException("The index is not in the effective size.");			
 		}
@@ -201,17 +201,17 @@ public class ObjectList {
 	 * Postcondition: the specified value is inserted into the array at the specified index and all the following items move one position to "make room" for the item
 	 * @throws IndexOutOfBoundsException if there is no room in the array or if the index is out of bounds
 	 */
-	public void add (int index, Object o) {
+	public void add (int index, E o) {
 		if (mySize + 1 > maxSize()) {
 			throw new IndexOutOfBoundsException("There is no room in the array.");
 		}
 		
-		if (index > mySize) {
+		if (index >= mySize) {
 			throw new IndexOutOfBoundsException("The specified index is out of bounds.");
 		}
 		
 		mySize++;
-		for (int i = mySize-1; index < i; i--) {
+		for (int i = mySize-1; index <= i; i--) {
 			myList[i] = myList[i-1];
 		}
 		myList[index] = o;
@@ -277,8 +277,8 @@ public class ObjectList {
 	 * Returns an array containing only the current items in the ObjectList
 	 * @return an array containing only the current items in the ObjectList
 	 */
-	public Object[] toArray() {
-		Object[] arr = new Object[mySize]; 
+	public E[] toArray() {
+		E[] arr = (E[]) new Object[mySize]; 
 		for (int i = 0; i < mySize; i++) {
 			arr[i] = myList[i];
 		}
@@ -290,7 +290,7 @@ public class ObjectList {
 	 * @param d: the Object that is being checked to see if it is in the ObjectList
 	 * @return a boolean depending on whether or not that Object is in the ObjectList
 	 */
-	public boolean contains(Object o) {
+	public boolean contains(E o) {
 		for (int i = 0; i < mySize; i++) {
 			if (myList[i].equals(o)) {
 				return true;
