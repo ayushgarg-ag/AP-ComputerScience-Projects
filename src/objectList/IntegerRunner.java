@@ -13,14 +13,10 @@ public class IntegerRunner {
 		System.out.println(list);
 		
 		int n = 0;
-//		for (ObjectList<Integer> o: list) {
-//			if (o.get(n) % 2 == 0) {
-//				list.remove(n);
-//			}
-//		}
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i) % 2 == 0) {
 				list.remove(i);
+				i--;
 			}
 		}
 		System.out.println(list);
