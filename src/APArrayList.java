@@ -23,33 +23,48 @@ public class APArrayList<E extends Comparable<E>> extends ArrayList<E> {
 		this.set(index2, val1);
 	}
 
-	// public E min () {
-	// E min = this.get(0);
-	// int minIndex = 0;
-	// for (int i = 0; i < this.size() - 1; i++) {
-	// if (min.compareTo(this.get(i)) > 0) {
-	// minIndex = i;
-	// }
-	// return min;
-	// }
-	// }
+//	public void insertionSort() {
+//		for (int k = 1; k < this.size(); k++) {
+//			E val = this.get(k);
+//			int j = k - 1;
+//			if (val < this.get(j)) {
+//				for (int j = k - 1; j < this.size(); j++) {
+//
+//				}
+//			}
+//		}
+//
+//	}
 
 	public void selectionSort() {
-		// implement a selectionSort method that modifies "this"
-
-		for (int i = 0; i < this.size() - 1; i++) {
-//			E min = this.get(i);
-			// find position of smallest num between (i + 1)th element and last element
+		for (int i = 0; i < this.size(); i++) {
+			// find position of smallest num
 			int minIndex = i;
-			E min = this.get(minIndex);
-			for (int j = i; i < this.size() - 1; j++) {
-				if ((this.get(i)).compareTo(min) < 0) {
+			E min = this.get(i);
+			for (int j = i; j < this.size(); j++) {
+				if (min.compareTo(this.get(j)) > 0) {
 					minIndex = j;
+					min = this.get(j);
 
 				}
-
 			}
 			this.swap(i, minIndex);
 		}
 	}
+
+	public void bubbleSort() {
+		int swaps = 0;
+		for (int k = 0; k < this.size() - 1; k++) {
+			for (int j = 0; j < this.size() - k - 1; j++) {
+				if (this.get(j).compareTo(this.get(j + 1)) > 0) {
+					this.swap(j, j + 1);
+					swaps++;
+				}
+			}
+			if (swaps == 0) {
+				break;
+			}
+		}
+	}
+
 }
