@@ -38,11 +38,14 @@ public class APArrayList<E extends Comparable<E>> extends ArrayList<E> {
 		// implement a selectionSort method that modifies "this"
 
 		for (int i = 0; i < this.size() - 1; i++) {
-			E min = this.get(i);
+//			E min = this.get(i);
+			// find position of smallest num between (i + 1)th element and last element
 			int minIndex = i;
+			E min = this.get(minIndex);
 			for (int j = i; i < this.size() - 1; j++) {
-				if (min.compareTo(this.get(i)) > 0) {
+				if ((this.get(i)).compareTo(min) < 0) {
 					minIndex = j;
+
 				}
 
 			}
