@@ -4,23 +4,35 @@ public class SortRunner {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		APArrayList<Integer> lst = new APArrayList<Integer>();
+		APArrayList<Integer> lstS = new APArrayList<Integer>();
 		for (int i = 0; i < 10; i++) {
-			lst.add((int) (Math.random() * 1000));
+			lstS.add((int) (Math.random() * 1000));
 		}
-		System.out.println(lst);
-		lst.selectionSort();
-		System.out.println(lst);
+		// Selection Sort
+		System.out.println("Selection Sort");
+		System.out.println(lstS);
+		lstS.selectionSort();
+		System.out.println(lstS);
 
 		// Bubble Sort
-		APArrayList<Integer> list = new APArrayList<Integer>();
+		System.out.println("\nBubble Sort");
+		APArrayList<Integer> lstB = new APArrayList<Integer>();
 		for (int i = 0; i < 10; i++) {
-			list.add((int) (Math.random() * 1000));
+			lstB.add((int) (Math.random() * 1000));
 		}
-		System.out.println(list);
-		list.bubbleSort();
-		System.out.println(list);
+		System.out.println(lstB);
+		lstB.bubbleSort();
+		System.out.println(lstB);
 
+		// Insertion Sort
+		System.out.println("\nInsertion Sort");
+		APArrayList<Integer> lstI = new APArrayList<Integer>();
+		for (int i = 0; i < 10; i++) {
+			lstI.add((int) (Math.random() * 1000));
+		}
+		System.out.println(lstI);
+		lstI.insertionSort();
+		System.out.println(lstI);
 	}
 
 }
