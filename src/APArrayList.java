@@ -49,8 +49,9 @@ public class APArrayList<E extends Comparable<E>> extends ArrayList<E> {
 				}
 			}
 			if (swaps == 0) {
-				break;
+				return;
 			}
+			swaps = 0;
 		}
 	}
 
