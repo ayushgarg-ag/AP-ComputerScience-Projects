@@ -1,3 +1,4 @@
+package APArrayList;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -58,21 +59,27 @@ public class APArrayList<E extends Comparable<E>> extends ArrayList<E> {
 	public void insertionSort() {
 		for (int k = 1; k < this.size(); k++) {
 			E val = this.get(k);
-			int j = k - 1;
+//			int j = k - 1;
 			// while (j >= 0 && val.compareTo(this.get(j)) < 0) {
 			// this.set(j+1, this.get(j));
 			// j--;
 			// }
-			boolean stillLooking = true;
-			while ((j >= 0) && (stillLooking == true)) {
-				if (val.compareTo(this.get(j)) < 0) {
-					this.set(j + 1, this.get(j));
-					j--;
-				} else {
-					stillLooking = false;
-				}
-				this.set(j + 1, val);
+//			boolean stillLooking = true;
+			int j;
+			for (j = k-1; j >= 0 && val.compareTo(this.get(j)) < 0; j--) {
+				this.set(j + 1, this.get(j));
 			}
+			this.set(j + 1, val);
+			
+//			while ((j >= 0) && (stillLooking == true)) {
+//				if (val.compareTo(this.get(j)) < 0) {
+//					this.set(j + 1, this.get(j));
+//					j--;
+//				} else {
+//					stillLooking = false;
+//				}
+//				this.set(j + 1, val);
+//			}
 		}
 	}
 }
