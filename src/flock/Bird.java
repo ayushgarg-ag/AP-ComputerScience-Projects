@@ -28,12 +28,28 @@ public class Bird extends Actor {
 			if (empty.size() != 0) {
 				int rand = (int) (Math.random() * empty.size());
 				Location loc = empty.get(rand);
-				if (loc.getRow() + 1 == this.getLocation().getRow()) {
+				System.out.println("Rand: "+rand+"\tInt: "+ (int)(.5*empty.size()));
+				if (rand < (int) (.5 * empty.size())) {
 					setDirection(this.getLocation().getDirectionToward(loc));
 					moveTo(loc);
 				}
+				else {	
+					if (loc.getRow() + 1 == this.getLocation().getRow()) {
+						setDirection(this.getLocation().getDirectionToward(loc));
+						moveTo(loc);
+					}
+				}
+//				if (rand > (int) (.3 * empty.size())) {
+//					if (loc.getRow() + 1 == this.getLocation().getRow()) {
+//						setDirection(this.getLocation().getDirectionToward(loc));
+//						moveTo(loc);
+//					}
+//				}
+//				else {	
+//					setDirection(this.getLocation().getDirectionToward(loc));
+//					moveTo(loc);
+//				}
 			}
-
 		} else {
 			this.setColor(Color.RED);
 			Location south = this.getLocation().getAdjacentLocation(Location.SOUTH);
