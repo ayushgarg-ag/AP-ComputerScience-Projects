@@ -25,30 +25,24 @@ public class Bird extends Actor {
 		if (Bird.flock == true) {
 			this.setColor(Color.GREEN);
 			ArrayList<Location> empty = this.getGrid().getEmptyAdjacentLocations(this.getLocation());
+			Location loc;
+			int rand = (int) (Math.random() * empty.size());
 			if (empty.size() != 0) {
-				int rand = (int) (Math.random() * empty.size());
-				Location loc = empty.get(rand);
-				System.out.println("Rand: "+rand+"\tInt: "+ (int)(.5*empty.size()));
-				if (rand < (int) (.5 * empty.size())) {
-					setDirection(this.getLocation().getDirectionToward(loc));
-					moveTo(loc);
-				}
-				else {	
+				int size = empty.size();
+				for (int i = 0; i < size; i++) {
+					rand = (int) (Math.random() * empty.size());
+					loc = empty.get(rand);
 					if (loc.getRow() + 1 == this.getLocation().getRow()) {
-						setDirection(this.getLocation().getDirectionToward(loc));
-						moveTo(loc);
+						empty.add(loc);
 					}
+
 				}
-//				if (rand > (int) (.3 * empty.size())) {
-//					if (loc.getRow() + 1 == this.getLocation().getRow()) {
-//						setDirection(this.getLocation().getDirectionToward(loc));
-//						moveTo(loc);
-//					}
-//				}
-//				else {	
-//					setDirection(this.getLocation().getDirectionToward(loc));
-//					moveTo(loc);
-//				}
+				rand = (int) (Math.random() * empty.size());
+				loc = empty.get(rand);
+
+				setDirection(this.getLocation().getDirectionToward(loc));
+				moveTo(loc);
+
 			}
 		} else {
 			this.setColor(Color.RED);
