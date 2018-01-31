@@ -2,37 +2,41 @@ package turtles;
 
 import TurtleGraphics.Pen;
 
-public class Circle implements Shape {
+public class Ellipse implements Shape {
 	private double xPos;
 	private double yPos;
-	private double radius;
+	private double radOne;
+	private double radTwo;
 	
-	public Circle () {
+	public Ellipse () {
 		xPos = 0;
 		yPos = 0;
-		radius = 5;
+		radOne = 5.0;
+		radTwo = 10.0;
 	}
-	public Circle (double x, double y, double r) {
+	public Ellipse (double x, double y, double r1, double r2) {
 		xPos = x;
 		yPos = y;
-		radius = r;
+		radOne = r1;
+		radTwo = r2;
 		
 	}
 	@Override
 	public double area() {
 		// TODO Auto-generated method stub
-		return Math.PI * radius *radius;
+		return Math.PI * radOne * radTwo;
 	}
 
 	@Override
 	public void draw(Pen p) {
 		// TODO Auto-generated method stub
 		p.up();
-		p.move(xPos, yPos+radius);		
+		p.move(xPos + radOne, yPos + radTwo);		
 		p.down();
 		p.setDirection(180);
 		for (int i = 0; i < 360; i++) {
-			p.move((2*Math.PI*radius)/360);
+			double circumference = 2*Math.PI*Math.sqrt(((Math.pow(radOne, 2))+(Math.pow(radTwo, 2)))/2);
+			p.move((circumference)/360);
 			p.turn(1);
 		}
 	}
@@ -59,11 +63,12 @@ public class Circle implements Shape {
 	@Override
 	public void stretchBy(double factor) {
 		// TODO Auto-generated method stub
-		radius *= factor;
+		radOne *= factor;
+		radTwo *= factor;
 	}
 	
 	public String toString() {
-		return "Center=(" + xPos + ", " + yPos + "); radius=" + radius;
+		return "Center=(" + xPos + ", " + yPos + "); Radius One =" + radOne + "; Radius Two =" + radTwo;
 	}
 
 }

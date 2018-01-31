@@ -2,17 +2,17 @@ package turtles;
 
 import TurtleGraphics.Pen;
 
-public class Circle implements Shape {
+public class Spiral implements Shape {
 	private double xPos;
 	private double yPos;
 	private double radius;
 	
-	public Circle () {
+	public Spiral () {
 		xPos = 0;
 		yPos = 0;
 		radius = 5;
 	}
-	public Circle (double x, double y, double r) {
+	public Spiral (double x, double y, double r) {
 		xPos = x;
 		yPos = y;
 		radius = r;
@@ -33,6 +33,7 @@ public class Circle implements Shape {
 		p.setDirection(180);
 		for (int i = 0; i < 360; i++) {
 			p.move((2*Math.PI*radius)/360);
+			radius = 2;
 			p.turn(1);
 		}
 	}

@@ -2,42 +2,42 @@ package turtles;
 
 import TurtleGraphics.Pen;
 
-public class Rect implements Shape {
+public class Polygon implements Shape {
 	private double xPos;
 	private double yPos;
-	private double height;
-	private double width;
+	private int sides;
+	private double length;
 
-	public Rect() {
+	public Polygon() {
 		xPos = 0;
 		yPos = 0;
-		height = 1.0;
-		width = 1.0;
+		sides = 6;
+		length = 5;
 	}
 
-	public Rect(double x, double y, double h, double w) {
+	public Polygon(double x, double y, int s, double l) {
 		xPos = x;
 		yPos = y;
-		height = h;
-		width = w;
+		sides = s;
+		length = l;
 	}
 
 	@Override
 	public double area() {
-		return width * height;
+		double apothem = (length/2)*(Math.tan((Math.PI*(sides-2))/(2*sides)));
+		double radius = length/(2*Math.sin(180/sides));
+		return .5 * apothem * sides * length;
 	}
 
 	@Override
 	public void draw(Pen p) {
 		p.up();
-		p.move(xPos+width/2, yPos+height/2);
+		p.move(xPos+length/2, yPos+length/2);
 		p.down();
 		p.setDirection(180);
-		for (int i = 0; i < 2; i++) {
-			p.move(width);
-			p.turn(90);
-			p.move(height);
-			p.turn(90);
+		for (int i = 0; i < sides; i++) {
+			p.move(length);
+			p.turn(((sides-2)*180)/sides);
 		}
 	}
 
@@ -60,12 +60,12 @@ public class Rect implements Shape {
 	@Override
 	public void stretchBy(double factor) {
 		// TODO Auto-generated method stub
-		height *= factor;
-		width *= factor;
+//		apothem *= factor;
+		sides *= factor;
 	}
 
 	public String toString() {
-		return "Center=(" + xPos + ", " + yPos + "); height=" + height + "; width=" + width;
+		return "Center=(" + xPos + ", " + yPos + "); Sides=" + sides + ";";
 	}
 
 }
