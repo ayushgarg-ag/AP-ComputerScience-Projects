@@ -7,12 +7,14 @@ public class Polygon implements Shape {
 	private double yPos;
 	private int sides;
 	private double length;
+	private double apothem;
 
 	public Polygon() {
 		xPos = 0;
 		yPos = 0;
 		sides = 6;
 		length = 5;
+		apothem = length/(2*Math.tan(Math.PI/sides));
 	}
 
 	public Polygon(double x, double y, int s, double l) {
@@ -20,24 +22,25 @@ public class Polygon implements Shape {
 		yPos = y;
 		sides = s;
 		length = l;
+		apothem = length/(2*Math.tan(Math.PI/sides));
 	}
 
 	@Override
 	public double area() {
-		double apothem = (length/2)*(Math.tan((Math.PI*(sides-2))/(2*sides)));
-		double radius = length/(2*Math.sin(180/sides));
+
+//		double radius = length/(2*Math.sin(180/sides));
 		return .5 * apothem * sides * length;
 	}
 
 	@Override
 	public void draw(Pen p) {
 		p.up();
-		p.move(xPos+length/2, yPos+length/2);
+		p.move(xPos+length/2, yPos+apothem);
 		p.down();
 		p.setDirection(180);
 		for (int i = 0; i < sides; i++) {
 			p.move(length);
-			p.turn(((sides-2)*180)/sides);
+			p.turn(360/sides);
 		}
 	}
 
@@ -59,16 +62,12 @@ public class Polygon implements Shape {
 
 	@Override
 	public void stretchBy(double factor) {
-		// TODO Auto-generated method stub
-//		apothem *= factor;
-		sides *= factor;
+		length *= factor;
+		apothem = length/(2*Math.tan(Math.PI/sides));
 	}
 
 	public String toString() {
-		return "Center=(" + xPos + ", " + yPos + "); Sides=" + sides + ";";
+		return "Center=(" + xPos + ", " + yPos + "); Sides=" + sides + "; Length" + length;
 	}
 
 }
-
-
-
