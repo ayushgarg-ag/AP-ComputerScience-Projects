@@ -33,7 +33,7 @@ public class ShapeRunner {
 		p2.drawString("" + c1.area());
 
 		Pen p3 = new StandardPen(); // Create a separate Pen window
-		Polygon e1 = new Polygon(0.0, 0.0, 4, 10); // Create a Polygon instance
+		Polygon e1 = new Polygon(0.0, 0.0, 6, 10); // Create a Polygon instance
 		e1.draw(p3); // Draw the Polygon with p3
 		e1.stretchBy(10.0);
 		e1.draw(p3);
@@ -155,7 +155,7 @@ public class ShapeRunner {
 				p4.drawString("" + s.area());
 			}
 
-			System.out.println("Do you want to play again?");
+			System.out.println("Do you want to play again? (yes or no)");
 			response = reader2.next();
 
 		} while (response.equals("yes"));
