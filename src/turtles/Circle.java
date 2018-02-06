@@ -3,9 +3,9 @@ package turtles;
 import TurtleGraphics.Pen;
 
 public class Circle implements Shape {
-	private double xPos;
-	private double yPos;
-	private double radius;
+	protected double xPos;
+	protected double yPos;
+	protected double radius;
 	
 	public Circle () {
 		xPos = 0;

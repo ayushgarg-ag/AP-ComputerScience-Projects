@@ -3,10 +3,10 @@ package turtles;
 import TurtleGraphics.Pen;
 
 public class Rect implements Shape {
-	private double xPos;
-	private double yPos;
-	private double height;
-	private double width;
+	protected double xPos;
+	protected double yPos;
+	protected double height;
+	protected double width;
 
 	public Rect() {
 		xPos = 0;
@@ -67,8 +67,4 @@ public class Rect implements Shape {
 	public String toString() {
 		return "Center=(" + xPos + ", " + yPos + "); height=" + height + "; width=" + width;
 	}
-
 }
-
-
-
