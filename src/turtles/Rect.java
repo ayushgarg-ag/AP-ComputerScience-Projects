@@ -2,9 +2,7 @@ package turtles;
 
 import TurtleGraphics.Pen;
 
-public class Rect implements Shape {
-	protected double xPos;
-	protected double yPos;
+public class Rect extends AbstractShape implements Shape {
 	protected double height;
 	protected double width;
 
@@ -39,22 +37,6 @@ public class Rect implements Shape {
 			p.move(height);
 			p.turn(90);
 		}
-	}
-
-	@Override
-	public double getXPos() {
-		return xPos;
-	}
-
-	@Override
-	public double getYPos() {
-		return yPos;
-	}
-
-	@Override
-	public void move(double x, double y) {
-		this.xPos = x;
-		this.yPos = y;
 	}
 
 	@Override

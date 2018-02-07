@@ -34,7 +34,7 @@ public class Wheel extends Circle {
 			p.move(radius);
 			p.turn(180);
 			p.move(radius);
-			p.turn(360 / spokes);
+			p.turn((360 / spokes)+180);
 
 		}
 	}

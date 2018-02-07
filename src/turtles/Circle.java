@@ -2,9 +2,7 @@ package turtles;
 
 import TurtleGraphics.Pen;
 
-public class Circle implements Shape {
-	protected double xPos;
-	protected double yPos;
+public class Circle extends AbstractShape implements Shape {
 	protected double radius;
 	
 	public Circle () {
@@ -35,25 +33,6 @@ public class Circle implements Shape {
 			p.move((2*Math.PI*radius)/360);
 			p.turn(1);
 		}
-	}
-
-	@Override
-	public double getXPos() {
-		// TODO Auto-generated method stub
-		return xPos;
-	}
-
-	@Override
-	public double getYPos() {
-		// TODO Auto-generated method stub
-		return yPos;
-	}
-
-	@Override
-	public void move(double xPos, double yPos) {
-		// TODO Auto-generated method stub
-		this.xPos = xPos;
-		this.yPos = yPos;
 	}
 
 	@Override
