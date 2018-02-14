@@ -20,7 +20,7 @@ public class ChameleonRunner {
 		Actor b = new Actor();
 		a.setColor(Color.GREEN);
 		Actor c = new Actor();
-		ChameleonCritter crit = new ChameleonCritter();
+		ChameleonKid crit = new ChameleonKid();
 		a.setColor(Color.BLUE);
 		world.add(a);
 		world.add(b);
