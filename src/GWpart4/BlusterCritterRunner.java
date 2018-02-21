@@ -15,36 +15,22 @@ public class BlusterCritterRunner {
 	public static void main(String[] args) {
 
 		Grid<Actor> grid = new BoundedGrid<Actor>(20, 20);
-		ActorWorld world = new ActorWorld (grid);
-		
-		BlusterCritter crit = new BlusterCritter();
+		ActorWorld world = new ActorWorld(grid);
+
+		BlusterCritter crit = new BlusterCritter(2);
 		crit.setColor(Color.GREEN);
 		world.add(new Location(5, 5), crit);
-		
-		
+
 		for (int r = -2; r <= 2; r++) {
 			for (int c = -2; c <= 2; c++) {
-//				Actor cr = new Critter();
 				if (r != 0 && c != 0) {
-					world.add(new Location(5-r, 5-c), new Critter());
+					world.add(new Location(5 - r, 5 - c), new Critter());
 				}
 			}
 		}
-		
-		BlusterCritter critB = new BlusterCritter();
-		critB.setColor(Color.PINK);
-		Color c = critB.getColor().brighter();
-//		critB.getColor().darker().
-		System.out.println(critB.getColor());
+		BlusterCritter critB = new BlusterCritter(2);
+		critB.setColor(Color.GRAY);
 		world.add(new Location(15, 15), critB);
-
-
-//		Rock c = new Rock();
-//		c.setColor(Color.RED);
-//		world.add(new Location(8, 8), c);
-//		ChameleonKid critC = new ChameleonKid();
-//		world.add(new Location(8, 7), critC);
-	
 		world.show();
 	}
 
