@@ -7,6 +7,7 @@ import info.gridworld.grid.*;
 
 public class BlusterCritter extends Critter {
 	protected static int c;
+	private static final double DARKENING_FACTOR = 5;
 
 	public BlusterCritter() {
 		super();
@@ -61,11 +62,40 @@ public class BlusterCritter extends Critter {
 		}
 
 		if (c > count) {
-			Color col = getColor().brighter();
-			setColor(col);
+			this.brighten();
+			System.out.println(getColor());
 		} else {
-			Color colo = getColor().darker();
-			setColor(colo);
+			this.darken();
+			System.out.println(getColor());
+
 		}
+	}
+
+	public void darken() {
+		Color c = getColor();
+		int red = c.getRed();
+		int green = c.getGreen();
+		int blue = c.getBlue();
+		if (red > 5)
+			red -= DARKENING_FACTOR;
+		if (green > 5)
+			green -= DARKENING_FACTOR;
+		if (blue > 5)
+			blue -= DARKENING_FACTOR;
+		setColor(new Color(red, green, blue));
+	}
+
+	public void brighten() {
+		Color c = getColor();
+		int red = c.getRed();
+		int green = c.getGreen();
+		int blue = c.getBlue();
+		if (red < 250)
+			red += DARKENING_FACTOR;
+		if (green < 250)
+			green += DARKENING_FACTOR;
+		if (blue < 250)
+			blue += DARKENING_FACTOR;
+		setColor(new Color(red, green, blue));
 	}
 }

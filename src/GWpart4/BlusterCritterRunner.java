@@ -21,13 +21,14 @@ public class BlusterCritterRunner {
 		crit.setColor(Color.GREEN);
 		world.add(new Location(5, 5), crit);
 
-		for (int r = -2; r <= 2; r++) {
-			for (int c = -2; c <= 2; c++) {
+		for (int r = -3; r <= 3; r++) {
+			for (int c = -3; c <= 3; c++) {
 				if (r != 0 && c != 0) {
 					world.add(new Location(5 - r, 5 - c), new Critter());
 				}
 			}
 		}
+		
 		BlusterCritter critB = new BlusterCritter(2);
 		critB.setColor(Color.GRAY);
 		world.add(new Location(15, 15), critB);
