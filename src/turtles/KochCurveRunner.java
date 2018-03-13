@@ -38,25 +38,41 @@ public class KochCurveRunner {
 		length = reader.nextDouble();
 		System.out.println("What degree?");
 		degree = reader.nextInt();
-		
-		drawKochCurve(p4, length, degree);
-		
+		p4.setDirection(0);
+
+		for (int i = 0; i < 6; i++) {
+			drawKochCurve(p4, length, degree);
+			p4.turn(-60);
+//			drawKochCurve(p4, length, degree);
+//			p4.turn(-60);
+//			drawKochCurve(p4, length, degree);
+		}
 	}
 	public static void drawKochCurve(Pen p, double len, int deg) {
 		if (deg == 0) {
-			p.down();
-			p.setDirection(0);
+//			p.down();
+//			p.setDirection(0);
 			p.move(len);
 		}
 		else {
-			p.setDirection(0);
-			p.move(len/3.0);
+			drawKochCurve(p, len/3, deg - 1);
 			p.turn(60);
-			p.move(len/3.0);
+			drawKochCurve(p, len/3, deg - 1);
 			p.turn(-120);
-			p.move(len/3.0);
+			drawKochCurve(p, len/3, deg - 1);
 			p.turn(60);
-			p.move(len/3.0);
+			drawKochCurve(p, len/3, deg - 1);
+			
+//			p.setDirection(0);
+//			p.move(len/3.0);
+//			p.turn(60);
+//			p.move(len/3.0);
+//			p.turn(-120);
+//			p.move(len/3.0);
+//			p.turn(60);
+//			p.move(len/3.0);
+//			drawKochCurve(p, len, deg - 1);
+
 		}
 	}
 
