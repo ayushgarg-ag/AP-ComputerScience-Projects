@@ -60,15 +60,21 @@ public class KochCurveRunner {
 			p.turn(-120);
 		}
 
-		p2.up();
-		p2.move(-length/2,  length/Math.sqrt(2));
+		p.up();
+//		p.move(-length/2, length/(2*Math.tan((Math.PI/3))));
+		p2.move(length/3, -length/2);
+
+//		p.setDirection(0);
+//		p2.move(-length/2,  length/Math.sqrt(2));
+//		p2.move(length/3, -length/2);
+
 //		p2.move(0, 0);
 
 //		p.setDirection(180);
 //		p2.move(length / 2);
 //		p2.setDirection(90);
 //		p2.move(length * Math.sqrt(3) / 2);
-		p2.setDirection(180);
+//		p2.setDirection(180);
 		p2.down();
 		drawCCurve(p2, length, degree);
 	}
