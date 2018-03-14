@@ -82,4 +82,26 @@ public class APArrayList<E extends Comparable<E>> extends ArrayList<E> {
 //			}
 		}
 	}
+	
+	public int recSearch (E item) {
+		return recSearch (item, 0);
+	}
+	
+	private int recSearch (E item, int start) {
+		  if (this.size() <= start) {
+		    return -1;
+		  }
+		  if ((this.get(start)).equals(item)) {
+			  return start;
+		  }
+		  return recSearch(item, start + 1);
+
+		// base-case: start is "index out of bounds"
+ // 		this means "not found" - return -1
+  // base-case: item at start is the value
+    //		this means "found" - return start
+    // recursive case - return the results of:
+    //        recSearch (item, start+1);
+}
+
 }

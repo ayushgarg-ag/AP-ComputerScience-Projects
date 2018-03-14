@@ -14,6 +14,7 @@ public class KochCurveRunner {
 
 		String response;
 		Pen p;
+		Pen p2;
 		Scanner reader = new Scanner(System.in);
 
 		System.out.println("Which pen do you want?(1 = StandardPen, 2 = WigglePen, 3 = RainbowPen, 4 = RainbowWigglePen)");
@@ -25,12 +26,16 @@ public class KochCurveRunner {
 		}
 		if (pen == 1) {
 			p = new StandardPen(); // Create a separate Pen window
+			p2 = new StandardPen(); // Create a separate Pen window
 		} else if (pen == 2) {
 			p = new WigglePen(); // Create a separate Pen window
+			p2 = new WigglePen(); // Create a separate Pen window
 		} else if (pen == 3) {
 			p = new RainbowPen(); // Create a separate Pen window
+			p2 = new RainbowPen(); // Create a separate Pen window
 		} else {
 			p = new WiggleRainbowPen(); // Create a separate Pen window
+			p2 = new WiggleRainbowPen(); // Create a separate Pen window
 		}
 		double length;
 		int degree;
@@ -40,10 +45,14 @@ public class KochCurveRunner {
 		degree = reader.nextInt();
 
 		p.up();
-		p.setDirection(180);
-		p.move(length / 2);
-		p.setDirection(90);
-		p.move(length / 2);
+		p.move(-length/2, length/(2*Math.tan((Math.PI/3))));
+//		p.move(0, 0);
+		
+
+//		p.setDirection(180);
+//		p.move(length / 2);
+//		p.setDirection(90);
+//		p.move(length * (1/(4*Math.sqrt(3))));
 		p.setDirection(0);
 		p.down();
 		for (int i = 0; i < 3; i++) {
@@ -51,15 +60,17 @@ public class KochCurveRunner {
 			p.turn(-120);
 		}
 
-		p.up();
-		p.move(100, 100);
-		p.setDirection(0);
-		p.move(length / 2);
-		p.setDirection(90);
-		p.move(length / Math.sqrt(2));
-		p.setDirection(180);
-		p.down();
-		drawCCurve(p, length, degree);
+		p2.up();
+		p2.move(-length/2,  length/Math.sqrt(2));
+//		p2.move(0, 0);
+
+//		p.setDirection(180);
+//		p2.move(length / 2);
+//		p2.setDirection(90);
+//		p2.move(length * Math.sqrt(3) / 2);
+		p2.setDirection(180);
+		p2.down();
+		drawCCurve(p2, length, degree);
 	}
 
 	public static void drawKochCurve(Pen p, double len, int deg) {
@@ -81,9 +92,9 @@ public class KochCurveRunner {
 			p.move(len);
 		} else {
 			p.turn(45);
-			drawCCurve(p, len / Math.sqrt(2), deg - 1);
+			drawCCurve(p, len * Math.sqrt(3) / 2, deg - 1);
 			p.turn(-90);
-			drawCCurve(p, len / Math.sqrt(2), deg - 1);
+			drawCCurve(p, len * Math.sqrt(3) / 2, deg - 1);
 			p.turn(45);
 		}
 	}
