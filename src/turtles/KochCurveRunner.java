@@ -17,7 +17,8 @@ public class KochCurveRunner {
 		Pen p2;
 		Scanner reader = new Scanner(System.in);
 
-		System.out.println("Which pen do you want?(1 = StandardPen, 2 = WigglePen, 3 = RainbowPen, 4 = RainbowWigglePen)");
+		System.out.println(
+				"Which pen do you want?(1 = StandardPen, 2 = WigglePen, 3 = RainbowPen, 4 = RainbowWigglePen)");
 		int pen;
 		try {
 			pen = reader.nextInt();
@@ -45,14 +46,7 @@ public class KochCurveRunner {
 		degree = reader.nextInt();
 
 		p.up();
-		p.move(-length/2, length/(2*Math.tan((Math.PI/3))));
-//		p.move(0, 0);
-		
-
-//		p.setDirection(180);
-//		p.move(length / 2);
-//		p.setDirection(90);
-//		p.move(length * (1/(4*Math.sqrt(3))));
+		p.move(-length / 2, length / (2 * Math.tan((Math.PI / 3))));
 		p.setDirection(0);
 		p.down();
 		for (int i = 0; i < 3; i++) {
@@ -60,21 +54,9 @@ public class KochCurveRunner {
 			p.turn(-120);
 		}
 
-		p.up();
-//		p.move(-length/2, length/(2*Math.tan((Math.PI/3))));
-		p2.move(length/3, -length/2);
-
-//		p.setDirection(0);
-//		p2.move(-length/2,  length/Math.sqrt(2));
-//		p2.move(length/3, -length/2);
-
-//		p2.move(0, 0);
-
-//		p.setDirection(180);
-//		p2.move(length / 2);
-//		p2.setDirection(90);
-//		p2.move(length * Math.sqrt(3) / 2);
-//		p2.setDirection(180);
+		p2.up();
+		p2.move(length * .2 * degree, -length * .28 * degree);
+		p2.setDirection(90);
 		p2.down();
 		drawCCurve(p2, length, degree);
 	}
