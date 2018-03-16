@@ -1,4 +1,5 @@
 package APArrayList;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -59,49 +60,67 @@ public class APArrayList<E extends Comparable<E>> extends ArrayList<E> {
 	public void insertionSort() {
 		for (int k = 1; k < this.size(); k++) {
 			E val = this.get(k);
-//			int j = k - 1;
+			// int j = k - 1;
 			// while (j >= 0 && val.compareTo(this.get(j)) < 0) {
 			// this.set(j+1, this.get(j));
 			// j--;
 			// }
-//			boolean stillLooking = true;
+			// boolean stillLooking = true;
 			int j;
-			for (j = k-1; j >= 0 && val.compareTo(this.get(j)) < 0; j--) {
+			for (j = k - 1; j >= 0 && val.compareTo(this.get(j)) < 0; j--) {
 				this.set(j + 1, this.get(j));
 			}
 			this.set(j + 1, val);
-			
-//			while ((j >= 0) && (stillLooking == true)) {
-//				if (val.compareTo(this.get(j)) < 0) {
-//					this.set(j + 1, this.get(j));
-//					j--;
-//				} else {
-//					stillLooking = false;
-//				}
-//				this.set(j + 1, val);
-//			}
+
+			// while ((j >= 0) && (stillLooking == true)) {
+			// if (val.compareTo(this.get(j)) < 0) {
+			// this.set(j + 1, this.get(j));
+			// j--;
+			// } else {
+			// stillLooking = false;
+			// }
+			// this.set(j + 1, val);
+			// }
 		}
 	}
-	
-	public int recSearch (E item) {
-		return recSearch (item, 0);
+
+	public int recSearch(E item) {
+		return recSearch(item, 0);
+	}
+
+	private int recSearch(E item, int start) {
+		if (this.size() <= start) {
+			return -1;
+		}
+		if ((this.get(start)).equals(item)) {
+			return start;
+		}
+		return recSearch(item, start + 1);
+	}
+
+	public int recBinSearch (E item) {
+		return recBinSearch (item, 0, size() - 1);
 	}
 	
-	private int recSearch (E item, int start) {
-		  if (this.size() <= start) {
-		    return -1;
-		  }
-		  if ((this.get(start)).equals(item)) {
-			  return start;
-		  }
-		  return recSearch(item, start + 1);
-
-		// base-case: start is "index out of bounds"
- // 		this means "not found" - return -1
-  // base-case: item at start is the value
-    //		this means "found" - return start
-    // recursive case - return the results of:
-    //        recSearch (item, start+1);
-}
-
+	private int recBinSearch (E item, int start, int end) {
+		// perform recursive binary search
+		// base case 1: item found at midpoint: return midpoint
+		int midpoint = (start + end)/2;
+		E midVal = this.get(midpoint);
+		if (midVal.equals(item)) {
+			return midpoint;
+		}
+		// base case 2: not found (start and end are "too close" to partition): return -1
+		if (start > end) {
+			return -1;
+		}
+		// recursive case 1: item is between start and midpoint:
+		if (item.compareTo(this.get(midpoint)) < 0) {
+			return recBinSearch (item , start, midpoint - 1);
+		}
+		// recursive case 2: item is between midpoint and end:
+		else {
+			return recBinSearch(item, midpoint+1, end);
+		}
+	}
 }
