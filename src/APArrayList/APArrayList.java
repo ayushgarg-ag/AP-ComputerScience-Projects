@@ -84,6 +84,15 @@ public class APArrayList<E extends Comparable<E>> extends ArrayList<E> {
 		}
 	}
 
+	public int linearSearch(E item) {
+		for (int i = 0; i < this.size(); i++) {
+			if ((this.get(i)).equals(item)) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
 	public int recSearch(E item) {
 		return recSearch(item, 0);
 	}
@@ -98,29 +107,49 @@ public class APArrayList<E extends Comparable<E>> extends ArrayList<E> {
 		return recSearch(item, start + 1);
 	}
 
-	public int recBinSearch (E item) {
-		return recBinSearch (item, 0, size() - 1);
+	public int recBinSearch(E item) {
+		return recBinSearch(item, 0, size() - 1);
 	}
-	
-	private int recBinSearch (E item, int start, int end) {
+
+	private int recBinSearch(E item, int start, int end) {
 		// perform recursive binary search
 		// base case 1: item found at midpoint: return midpoint
-		int midpoint = (start + end)/2;
+		int midpoint = (start + end) / 2;
 		E midVal = this.get(midpoint);
-		if (midVal.equals(item)) {
+		if (item.equals(midVal)) {
 			return midpoint;
 		}
-		// base case 2: not found (start and end are "too close" to partition): return -1
+		// base case 2: not found (start and end are "too close" to partition): return
+		// -1
 		if (start > end) {
 			return -1;
 		}
 		// recursive case 1: item is between start and midpoint:
-		if (item.compareTo(this.get(midpoint)) < 0) {
-			return recBinSearch (item , start, midpoint - 1);
+		if (item.compareTo(midVal) < 0) {
+			return recBinSearch(item, start, midpoint - 1);
 		}
 		// recursive case 2: item is between midpoint and end:
 		else {
-			return recBinSearch(item, midpoint+1, end);
+			return recBinSearch(item, midpoint + 1, end);
 		}
+	}
+
+	public int binarySearch(E item) {
+		int left = 0;
+		int right = size() - 1;
+		int position = -1;
+		while (left <= right) {
+			int midpoint = (left + right) / 2;
+			if (get(midpoint).compareTo(item) == 0) {
+				return midpoint;
+			}
+			else if (get(midpoint).compareTo(item) < 0) {
+				left = midpoint + 1;
+			}
+			else if (get(midpoint).compareTo(item) > 0) {
+				right = midpoint - 1;
+			}
+		}
+		return position;
 	}
 }
