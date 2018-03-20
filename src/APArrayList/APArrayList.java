@@ -142,14 +142,59 @@ public class APArrayList<E extends Comparable<E>> extends ArrayList<E> {
 			int midpoint = (left + right) / 2;
 			if (get(midpoint).compareTo(item) == 0) {
 				return midpoint;
-			}
-			else if (get(midpoint).compareTo(item) < 0) {
+			} else if (get(midpoint).compareTo(item) < 0) {
 				left = midpoint + 1;
-			}
-			else if (get(midpoint).compareTo(item) > 0) {
+			} else if (get(midpoint).compareTo(item) > 0) {
 				right = midpoint - 1;
 			}
 		}
 		return position;
 	}
+
+	public void simpleQuickSort() {
+		if (this.size() == 0 || this.size() == 1) {
+			return;
+		}
+		E pivot = this.get(this.size() - 1);
+		this.remove(this.size() - 1);
+		APArrayList<E> small = new APArrayList<E>();
+		APArrayList<E> large = new APArrayList<E>();
+		for (E item : this) {
+			if (pivot.compareTo(item) > 0) {
+				small.add(item);
+			} else {
+				large.add(item);
+			}
+		}
+		this.clear();
+		small.simpleQuickSort();
+		large.simpleQuickSort();
+		this.addAll(small);
+		this.add(pivot);
+		this.addAll(large);
+	}
+
+	public void inPlaceQuickSort() {
+		inPlaceQuickSort(0, this.size() - 1);
+	}
+
+	public void inPlaceQuickSort(int left, int right) {
+		// sort just the portion from left to right
+		if (left >= right) {
+			return;
+		}
+		int pivot = 1 + (left + right)/2;
+		
+		for (int i = left, j = right; i >= j; i++, j++) {
+			if (this.get(i).compareTo(this.get(pivot)) >= 0) {
+				E leftval = this.get(i);
+			}
+			if (this.get(i).compareTo(this.get(pivot)) < 0) {
+				
+			}
+		}
+//		while (left )
+
+	}
+
 }
