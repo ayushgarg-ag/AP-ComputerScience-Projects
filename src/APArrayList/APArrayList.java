@@ -183,18 +183,27 @@ public class APArrayList<E extends Comparable<E>> extends ArrayList<E> {
 		if (left >= right) {
 			return;
 		}
-		int pivot = 1 + (left + right)/2;
+		int i = left;
+		int j = right;
+		E pivot = this.get((left + right) / 2);
 		
-		for (int i = left, j = right; i >= j; i++, j++) {
-			if (this.get(i).compareTo(this.get(pivot)) >= 0) {
-				E leftval = this.get(i);
+		while (i < j) {
+			while (this.get(i).compareTo(pivot) < 0) {
+				i++;
 			}
-			if (this.get(i).compareTo(this.get(pivot)) < 0) {
-				
+			while (pivot.compareTo(this.get(j)) < 0) {
+				j--;
+			}
+			if (i <= j) {
+				E temp = this.get(i);
+				this.set(i, this.get(j));
+				this.set(j, temp);
+				i++;
+				j--;
 			}
 		}
-//		while (left )
-
+		inPlaceQuickSort (left, j);
+		inPlaceQuickSort (i, right);
 	}
 
 }
