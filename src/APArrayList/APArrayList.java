@@ -186,7 +186,7 @@ public class APArrayList<E extends Comparable<E>> extends ArrayList<E> {
 		int i = left;
 		int j = right;
 		E pivot = this.get((left + right) / 2);
-		
+
 		while (i < j) {
 			while (this.get(i).compareTo(pivot) < 0) {
 				i++;
@@ -202,8 +202,46 @@ public class APArrayList<E extends Comparable<E>> extends ArrayList<E> {
 				j--;
 			}
 		}
-		inPlaceQuickSort (left, j);
-		inPlaceQuickSort (i, right);
+		inPlaceQuickSort(left, j);
+		inPlaceQuickSort(i, right);
+	}
+
+	public void merge(APArrayList<E> part1, APArrayList<E> part2) {
+		this.clear();
+		int i = 0;
+		int j = 0;
+		while (i < part1.size() && j < part2.size()) {
+			if (part1.get(i).compareTo(part2.get(j)) < 0) {
+				this.add(part1.get(i));
+				i++;
+			}
+			else {
+				this.add(part2.get(j));
+				j++;
+			}
+		}
+		if (part1.size() > i) {
+			while (i < part1.size()) {
+				this.add(part1.get(i));
+				i++;
+			}
+		}
+		else if (j < part2.size()) {
+			while (j < part2.size()) {
+				this.add(part2.get(j));
+				j++;
+			}
+		}
+	}
+	
+	public void mergeSort () {
+//		if (this.size() <= 1) {
+//			return;
+//		}
+//		int middle = this.size() / 2;
+//		for (int i = 0; i < middle; i++) {
+//			part1.
+//		}
 	}
 
 }
