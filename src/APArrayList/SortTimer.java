@@ -4,7 +4,7 @@ public class SortTimer {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("\tSelection\tBubble\tInsertion\tCollections\tQuick\tinPlaceQuick");
+		System.out.println("\tSelection\tBubble\tInsertion\tCollections\tQuick\tinPlaceQuick\tMerge");
 		for (int n = 1000; n <= 7000; n += 500) {
 			APArrayList<Double> lists = new APArrayList<Double>();
 			APArrayList<Double> listb = new APArrayList<Double>();
@@ -12,6 +12,8 @@ public class SortTimer {
 			APArrayList<Double> listc = new APArrayList<Double>();
 			APArrayList<Double> listq = new APArrayList<Double>();
 			APArrayList<Double> listipq = new APArrayList<Double>();
+			APArrayList<Double> listm = new APArrayList<Double>();
+			
 			for (int i = 0; i < n; i++) {
 				Double val = Math.random();
 				lists.add(val);
@@ -20,6 +22,7 @@ public class SortTimer {
 				listc.add(val);
 				listq.add(val);
 				listipq.add(val);
+				listm.add(val);
 			}
 
 			long selStartTime = System.nanoTime();
@@ -46,10 +49,10 @@ public class SortTimer {
 			long CollSortTime = CollEndTime - CollStartTime;
 			listc.clear();
 			
-			long QuickStartTime = System.nanoTime();
+			long quickStartTime = System.nanoTime();
 			listq.simpleQuickSort();
-			long QuickEndTime = System.nanoTime();
-			long QuickSortTime = QuickEndTime - QuickStartTime;
+			long quickEndTime = System.nanoTime();
+			long quickSortTime = quickEndTime - quickStartTime;
 			listq.clear();
 			
 			long inPlaceQuickStartTime = System.nanoTime();
@@ -58,7 +61,14 @@ public class SortTimer {
 			long inPlaceQuickSortTime = inPlaceQuickEndTime - inPlaceQuickStartTime;
 			listipq.clear();
 			
-			System.out.println(n + "\t" + selSortTime + "\t" + bubSortTime + "\t" + insSortTime + "\t" + CollSortTime + "\t" + QuickSortTime + "\t" + inPlaceQuickSortTime);
+			long mergeStartTime = System.nanoTime();
+			listm.mergeSort();
+			long mergeEndTime = System.nanoTime();
+			long mergeSortTime = mergeEndTime - mergeStartTime;
+			listq.clear();
+			
+			
+			System.out.println(n + "\t" + selSortTime + "\t" + bubSortTime + "\t" + insSortTime + "\t" + CollSortTime + "\t" + quickSortTime + "\t" + inPlaceQuickSortTime + "\t" + mergeSortTime);
 		}
 	}
 }

@@ -235,13 +235,22 @@ public class APArrayList<E extends Comparable<E>> extends ArrayList<E> {
 	}
 	
 	public void mergeSort () {
-//		if (this.size() <= 1) {
-//			return;
-//		}
-//		int middle = this.size() / 2;
-//		for (int i = 0; i < middle; i++) {
-//			part1.
-//		}
+		if (this.size() <= 1) {
+			return;
+		}
+		APArrayList<E> part1 = new APArrayList<>();
+		APArrayList<E> part2 = new APArrayList<>();
+		
+		int middle = this.size() / 2;
+		for (int i = 0; i < middle; i++) {
+			part1.add(this.get(i));
+		}
+		for (int i = middle; i < this.size(); i++) {
+			part2.add(this.get(i));
+		}
+		part1.mergeSort();
+		part2.mergeSort();
+		this.merge(part1, part2);
 	}
 
 }
