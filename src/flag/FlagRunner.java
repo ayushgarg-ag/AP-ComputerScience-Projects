@@ -7,42 +7,32 @@ public class FlagRunner {
 		printFlag(4);
 	}
 
-	public static void printFlag (int size) {
-		arrange(size);
+	public static void printFlag(int size) {
+//		line(size);
 	}
-	public static void printStars (int n) {
-//		if (n == 1) {
-//			System.out.print("*");
-//		}
-//		else {
-			for (int i = 0; i < n; i++) {
-				System.out.print("*");
-			}
-//		}
-//		System.out.println();
-//		printStars(n-1);
-	}
-	public static void printStripes (int n) {
-//		if (n == 1) {
-//			System.out.print("=");
-//		}
-//		else {
-			for (int i = 0; i < n; i++) {
-				System.out.print("=");
-			}
-//		}
-//		System.out.println();
-//		printStripes(n-1);
-	}
-	public static void arrange (int n) {
-		int i = 0;
-		int j = n;
-		for (int a = 0; a < n + 1; a++) {
-			printStars(i);
-			printStripes(j);
-			i++;
-			j--;
-			System.out.println();
+
+	public static void printStars(int n) {
+		if (n == 0) {
+			return;
 		}
+		System.out.print("*");
+		printStars(n - 1);
+	}
+
+	public static void printStripes(int n) {
+		if (n == 0) {
+			return;
+		}
+		System.out.print("*");
+		printStars(n - 1);
+	}
+
+	public static void line(int stripes, int stars) {
+		if (stripes < 0) {
+			return;
+		}
+		printStars(stars);
+		printStripes(stripes);
+		line(stripes + 1, stars - 1);
 	}
 }

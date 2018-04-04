@@ -5,7 +5,7 @@ public class Flag {
 		arrange(size);
 	}
 	public void printStars (int n) {
-		if (n == 1) {
+		if (n < 0) {
 			System.out.print("*");
 		}
 		else {
@@ -18,7 +18,7 @@ public class Flag {
 	}
 	public void printStripes (int n) {
 		if (n == 1) {
-			System.out.print("=");
+			return;
 		}
 		else {
 			for (int i = 0; i < n; i++) {
