@@ -16,7 +16,7 @@ public class P2PPictureTester {
 	    
 	    // Part A5 Exercises
 	    
-/*
+
 		Picture onlyBlue = new Picture (file);
 		onlyBlue.setTitle ("Only Blue");
 		onlyBlue.keepOnlyBlue();
@@ -42,7 +42,8 @@ public class P2PPictureTester {
 		bw.grayscale();
 		bw.explore ();
 
-		Picture water = new Picture ("water.jpg");
+		
+		Picture water = new Picture ("src/pixLab/images/water.jpg");
 		water.setTitle ("Original Water Image");
 		water.explore();
 		water.setTitle ("Fixed Water Image");
@@ -51,6 +52,7 @@ public class P2PPictureTester {
 			    
 	    // Part A6 Exercises
 	     
+		
 		Picture vMirror = new Picture (file);
 		vMirror.setTitle ("Mirrored Vertically L to R");
 		vMirror.mirrorVertical();
@@ -61,6 +63,7 @@ public class P2PPictureTester {
 		vMirror2.mirrorVerticalRightToLeft();
 		vMirror2.explore ();
 	    
+		
 		Picture hMirror = new Picture (file);
 		hMirror.setTitle ("Mirrored Horizontally T to B");
 		hMirror.mirrorHorizontal();
@@ -70,7 +73,7 @@ public class P2PPictureTester {
 		hMirror2.setTitle ("Mirrored Horizontally B to T");
 		hMirror2.mirrorHorizontalBotToTop();
 		hMirror2.explore ();
-	    
+	    /*
 		Picture diag = new Picture (file);
 		diag.setTitle ("Mirrored Diagonally");
 		diag.mirrorDiagonal();

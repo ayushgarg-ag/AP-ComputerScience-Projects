@@ -77,10 +77,9 @@ public class IntArrayWorker
   }
 
   public int getLargest () {
-	  int val = 0;
+	  int val = matrix[0][0];
 	  for (int r = 0; r < matrix.length; r++) {
 		  for (int c = 0; c < matrix[r].length; c++) {
-			  val = matrix[r][c];
 			  if (matrix[r][c] > val) {
 				 val = matrix[r][c];
 			  }

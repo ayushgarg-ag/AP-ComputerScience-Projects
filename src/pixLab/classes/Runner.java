@@ -26,7 +26,7 @@ public class Runner {
 
 		
 		Picture bw = new Picture (file);
-		bw.makeBW(); // mutates picture
+		bw.grayscale(); // mutates picture
 		bw.setTitle("Gray");
 		bw.explore(); // display mutated picture
 		
