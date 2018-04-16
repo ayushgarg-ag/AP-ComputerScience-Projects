@@ -181,7 +181,6 @@ public class Picture extends SimplePicture {
 		}
 	}
 
-
 	public void mirrorHorizontal() {
 		Pixel[][] pixels = this.getPixels2D();
 		Pixel topPixel = null;
@@ -195,7 +194,6 @@ public class Picture extends SimplePicture {
 			}
 		}
 	}
-	
 
 	public void mirrorHorizontalBotToTop() {
 		Pixel[][] pixels = this.getPixels2D();
@@ -210,6 +208,70 @@ public class Picture extends SimplePicture {
 			}
 		}
 	}
+
+	public void mirrorDiagonal() {
+		Pixel[][] pixels = this.getPixels2D();
+		Pixel bottomLeftPixel = null;
+		Pixel topRightPixel = null;
+		int width = pixels[0].length;
+		for (int row = 0; row < pixels.length; row++) {
+			for (int col = 0; col <= row; col++) {
+				bottomLeftPixel = pixels[row][col];
+				topRightPixel = pixels[col][row];
+				topRightPixel.setColor(bottomLeftPixel.getColor());
+			}
+		}
+	}
+
+	public void mirrorTemple() {
+		int mirrorPoint = 276;
+		Pixel leftPixel = null;
+		Pixel rightPixel = null;
+		Pixel[][] pixels = this.getPixels2D();
+	
+		for (int row = 27; row < 97; row++) {
+			for (int col = 13; col < mirrorPoint; col++) {
+				leftPixel = pixels[row][col];
+				rightPixel = pixels[row][mirrorPoint - col + mirrorPoint];
+				rightPixel.setColor(leftPixel.getColor());
+			}
+
+		}
+	}
+
+	public void mirrorArms() {
+		int mirrorPoint = 197;
+		Pixel topPixel = null;
+		Pixel bottomPixel = null;
+		Pixel[][] pixels = this.getPixels2D();
+	
+		for (int row = 157; row < mirrorPoint; row++) {
+			for (int col = 102; col < 295; col++) {
+				topPixel = pixels[row][col];
+				bottomPixel = pixels[row][col];
+				bottomPixel = pixels[mirrorPoint - row + mirrorPoint][col];
+				bottomPixel.setColor(topPixel.getColor());
+			}
+
+		}
+	}
+	
+	public void mirrorGull() {
+		int mirrorPoint = 345;
+		Pixel leftPixel = null;
+		Pixel rightPixel = null;
+		Pixel[][] pixels = this.getPixels2D();
+	
+		for (int row = 230; row < 320; row++) {
+			for (int col = 230; col < mirrorPoint; col++) {
+				leftPixel = pixels[row][col];
+				rightPixel = pixels[row][mirrorPoint - col + mirrorPoint];
+				rightPixel.setColor(leftPixel.getColor());
+			}
+
+		}
+	}
+	
 	/** Method to set the blue to 0 */
 	public void zeroBlue() {
 		Pixel[][] pixels = this.getPixels2D();

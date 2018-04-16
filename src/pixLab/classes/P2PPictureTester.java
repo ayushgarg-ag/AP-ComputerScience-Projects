@@ -73,12 +73,28 @@ public class P2PPictureTester {
 		hMirror2.setTitle ("Mirrored Horizontally B to T");
 		hMirror2.mirrorHorizontalBotToTop();
 		hMirror2.explore ();
-	    /*
+	    
 		Picture diag = new Picture (file);
 		diag.setTitle ("Mirrored Diagonally");
 		diag.mirrorDiagonal();
 		diag.explore ();
 	    
+		Picture temple = new Picture ("C:/Users/agarg01/Workspace/APCSGarg/src/pixLab/images/temple.jpg");
+		temple.setTitle ("Mirrored Temple");
+		temple.mirrorTemple();
+		temple.explore ();
+
+		Picture arms = new Picture ("C:/Users/agarg01/Workspace/APCSGarg/src/pixLab/images/snowman.jpg");
+		arms.setTitle ("Mirrored Snowman");
+		arms.mirrorArms();
+		arms.explore ();
+		
+		Picture gull = new Picture ("C:/Users/agarg01/Workspace/APCSGarg/src/pixLab/images/seagull.jpg");
+		gull.setTitle ("Mirrored Seagull");
+		gull.mirrorGull();
+		gull.explore ();
+		
+		/*
 	    // Extension:
 	    //  Complete ONE of: 
 	    //     Part A7 - Mirroring Part of a Picture (Temple, Arms, Gull)
