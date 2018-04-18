@@ -36,9 +36,12 @@ public class Deck {
 		// for (int i = 0; i < ranks.length; i++) {
 		// cards.add(new Card(ranks[i], suits[i], values[i]));
 		// }
-		for (String rank : ranks) {
+		cards = new ArrayList<Card>();
+//		for (String rank : ranks) {
+		for (int j = 0; j < ranks.length; j++) {
 			for (int i = 0; i < suits.length; i++) {
-				cards.add(new Card(rank, suits[i], values[i]));
+				cards.add(new Card(ranks[j], suits[i], values[j]));
+				size++;
 			}
 		}
 
@@ -79,12 +82,13 @@ public class Deck {
 	 *         previously dealt.
 	 */
 	public Card deal() {
-// deal — This method “deals” a card by removing a card from the deck and returning it, if there are any cards in the deck left to be dealt. It returns null if the deck is empty. 
 		if (this.size() == 0) {
 			return null;
 		}
-		Card c = cards.get(this.size() - 1);
-		cards.remove(c);
+		size--;
+//		Card c = cards.get(this.size() - 1);
+//		cards.remove(this.size() - 1);
+		return cards.get(size);
 		
 	}
 
