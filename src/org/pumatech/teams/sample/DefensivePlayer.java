@@ -50,7 +50,7 @@ public class DefensivePlayer extends AbstractPlayer {
 								return (north);
 							}
 							else {
-								return this.getLocation().getAdjacentLocation(Location.WEST);
+								return this.getLocation().getAdjacentLocation(Location.WEST) ;
 							}
 						}
 					}
