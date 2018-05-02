@@ -18,10 +18,6 @@ public class DefensivePlayer extends AbstractPlayer {
 	}
 
 	public Location getMoveLocation() {
-		// if (hasFlag())
-		// return getTeam().getFlag().getLocation();
-		// return getTeam().getOpposingTeam().getFlag().getLocation();
-
 		Location myLoc = this.getLocation();
 		Grid myGrid = this.getGrid();
 		Team myTeam = this.getTeam();
@@ -29,35 +25,9 @@ public class DefensivePlayer extends AbstractPlayer {
 		List<AbstractPlayer> theirPlayers = theirTeam.getPlayers();
 		Flag theirFlag = theirTeam.getFlag();
 		
-		int directionTowardsTheirFlag = myLoc.getDirectionToward(theirFlag.getLocation());
-		this.setDirection(myLoc.getDirectionToward(theirFlag.getLocation()));
-//				this.getLocation().getAdjacentLocation(Location.EAST);
-		Location locationTowardsTheirFlag = myLoc.getAdjacentLocation(getDirection());
-		if (this.getGrid().isValid(locationTowardsTheirFlag)) {
-			if (this.getGrid().get(locationTowardsTheirFlag) == null) {
-				return (locationTowardsTheirFlag);
-			}
-			else {
-				Location south = this.getLocation().getAdjacentLocation(Location.SOUTH);
-				if (this.getGrid().isValid(south)) {
-					if (this.getGrid().get(south) == null) {
-						return (south);
-					}
-					else {
-						Location north = this.getLocation().getAdjacentLocation(Location.NORTH);
-						if (this.getGrid().isValid(north)) {
-							if (this.getGrid().get(north) == null) {
-								return (north);
-							}
-							else {
-								return this.getLocation().getAdjacentLocation(Location.WEST) ;
-							}
-						}
-					}
-				}
-			}
-		}
-		return locationTowardsTheirFlag;
+		List<Location> possibleMoveLocations = getGrid().getEmptyAdjacentLocations(getLocation()); 
+		if (possibleMoveLocations.size() == 0) return null;
+		return possibleMoveLocations.get((int) (Math.random() * possibleMoveLocations.size()));
 	}
 
 }
