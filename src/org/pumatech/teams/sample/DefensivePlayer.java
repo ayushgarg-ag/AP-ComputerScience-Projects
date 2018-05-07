@@ -13,9 +13,12 @@ import info.gridworld.grid.Location;
 
 public class DefensivePlayer extends AbstractPlayer {
 	private int i = 0;
+	private Location originalLocation;
+	private ArrayList<Location> moved = new ArrayList<>();
 
 	public DefensivePlayer(Location startLocation) {
 		super(startLocation);
+		originalLocation = startLocation;
 	}
 
 	private boolean theyHaveFlag() {
@@ -84,6 +87,7 @@ public class DefensivePlayer extends AbstractPlayer {
 			this.setDirection(loc.getDirectionToward(whoHasFlag().getLocation()));
 			opp = loc.getAdjacentLocation(loc.getDirectionToward(whoHasFlag().getLocation()));
 			if (possibleMoveLocations.indexOf(opp) >= 0) {
+				moved.add(opp);
 				return opp;
 			}
 		}
@@ -91,11 +95,15 @@ public class DefensivePlayer extends AbstractPlayer {
 			this.setDirection(loc.getDirectionToward(whoOnOurSide().getLocation()));
 			opp = loc.getAdjacentLocation(loc.getDirectionToward(whoOnOurSide().getLocation()));
 			if (possibleMoveLocations.indexOf(opp) >= 0) {
+				moved.add(opp);
 				return opp;
 			}
 		}
+		if (moved.size() == 0) {
+			return upDown();
+		}
 
-		return upDown();
+		return moved.remove(moved.size()-1);
 	}
 	
 	private boolean southValid() {
@@ -124,12 +132,14 @@ public class DefensivePlayer extends AbstractPlayer {
 		if (i % 2 == 0) {
 			i++;
 			if (southValid()) {
+				moved.add(south);
 				return south;
 			}
 		}
 		else {
 			i++;
 			if (northValid()) {
+				moved.add(north);
 				return north;
 			}
 		}
