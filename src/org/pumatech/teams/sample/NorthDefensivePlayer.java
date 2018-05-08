@@ -11,14 +11,11 @@ import org.pumatech.ctf.Team;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 
-public class DefensivePlayer extends AbstractPlayer {
+public class NorthDefensivePlayer extends AbstractPlayer {
 	private int i = 0;
-	private Location originalLocation;
-	private ArrayList<Location> moved = new ArrayList<>();
 
-	public DefensivePlayer(Location startLocation) {
+	public NorthDefensivePlayer(Location startLocation) {
 		super(startLocation);
-		originalLocation = startLocation;
 	}
 
 	private boolean theyHaveFlag() {
@@ -60,7 +57,7 @@ public class DefensivePlayer extends AbstractPlayer {
 		return false;
 	}
 	
-	private AbstractPlayer whoOnOurSide() {
+	private AbstractPlayer whoOnNorthSide() {
 		Team myTeam = this.getTeam();
 		Team theirTeam = myTeam.getOpposingTeam();
 		List<AbstractPlayer> theirPlayers = theirTeam.getPlayers();
@@ -74,6 +71,7 @@ public class DefensivePlayer extends AbstractPlayer {
 	}
 
 	public Location getMoveLocation() {
+		long startTime = System.currentTimeMillis();
 		Location loc = this.getLocation();
 		Grid myGrid = this.getGrid();
 		Team myTeam = this.getTeam();
@@ -87,23 +85,17 @@ public class DefensivePlayer extends AbstractPlayer {
 			this.setDirection(loc.getDirectionToward(whoHasFlag().getLocation()));
 			opp = loc.getAdjacentLocation(loc.getDirectionToward(whoHasFlag().getLocation()));
 			if (possibleMoveLocations.indexOf(opp) >= 0) {
-				moved.add(opp);
 				return opp;
 			}
 		}
 		if (onOurSide()) {
-			this.setDirection(loc.getDirectionToward(whoOnOurSide().getLocation()));
-			opp = loc.getAdjacentLocation(loc.getDirectionToward(whoOnOurSide().getLocation()));
+			this.setDirection(loc.getDirectionToward(whoOnNorthSide().getLocation()));
+			opp = loc.getAdjacentLocation(loc.getDirectionToward(whoOnNorthSide().getLocation()));
 			if (possibleMoveLocations.indexOf(opp) >= 0) {
-				moved.add(opp);
 				return opp;
 			}
 		}
-		if (moved.size() == 0) {
 			return upDown();
-		}
-
-		return moved.remove(moved.size()-1);
 	}
 	
 	private boolean southValid() {
@@ -132,14 +124,12 @@ public class DefensivePlayer extends AbstractPlayer {
 		if (i % 2 == 0) {
 			i++;
 			if (southValid()) {
-				moved.add(south);
 				return south;
 			}
 		}
 		else {
 			i++;
 			if (northValid()) {
-				moved.add(north);
 				return north;
 			}
 		}
