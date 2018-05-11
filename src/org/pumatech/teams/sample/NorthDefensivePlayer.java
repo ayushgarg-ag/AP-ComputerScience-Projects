@@ -50,7 +50,7 @@ public class NorthDefensivePlayer extends AbstractPlayer {
 		List<AbstractPlayer> theirPlayers = theirTeam.getPlayers();
 
 		for (int i = 0; i < theirPlayers.size(); i++) {
-			if (myTeam.onSide(theirPlayers.get(i).getLocation())) {
+			if (myTeam.onSide(theirPlayers.get(i).getLocation()) && theirPlayers.get(i).getLocation().getRow() < getGrid().getNumRows() / 2) {
 				return true;
 			}
 		}
@@ -63,7 +63,7 @@ public class NorthDefensivePlayer extends AbstractPlayer {
 		List<AbstractPlayer> theirPlayers = theirTeam.getPlayers();
 
 		for (int i = 0; i < theirPlayers.size(); i++) {
-			if (myTeam.onSide(theirPlayers.get(i).getLocation())) {
+			if (myTeam.onSide(theirPlayers.get(i).getLocation()) && theirPlayers.get(i).getLocation().getRow() < getGrid().getNumRows() / 2) {
 				return theirPlayers.get(i);
 			}
 		}

@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.swing.JFrame;
 
-import org.pumatech.teams.sample.SampleOffense;
 import org.pumatech.teams.sample.SampleTeam;
 
 public class TournamentRunner {
@@ -14,9 +13,9 @@ public class TournamentRunner {
 	public static void main(String[] args) {
 		List<Team> teams = new ArrayList<Team>();
 		teams.add(new SampleTeam(Color.RED));
-		teams.add(new SampleOffense(Color.BLUE));
+		teams.add(new SampleTeam(Color.BLUE));
 		teams.add(new SampleTeam(Color.YELLOW));
-		teams.add(new SampleOffense(Color.WHITE));
+		teams.add(new SampleTeam(Color.WHITE));
 		
 		Bracket bracket = new Bracket(teams);
 		JFrame bracketViewer = new JFrame("Capture The Flag 2017 Bracket");

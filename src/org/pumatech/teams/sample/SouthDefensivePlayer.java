@@ -50,7 +50,7 @@ public class SouthDefensivePlayer extends AbstractPlayer {
 		List<AbstractPlayer> theirPlayers = theirTeam.getPlayers();
 
 		for (int i = 0; i < theirPlayers.size(); i++) {
-			if (myTeam.onSide(theirPlayers.get(i).getLocation())) {
+			if (myTeam.onSide(theirPlayers.get(i).getLocation()) && theirPlayers.get(i).getLocation().getRow() >= getGrid().getNumRows() / 2) {
 				return true;
 			}
 		}
@@ -63,7 +63,7 @@ public class SouthDefensivePlayer extends AbstractPlayer {
 		List<AbstractPlayer> theirPlayers = theirTeam.getPlayers();
 
 		for (int i = 0; i < theirPlayers.size(); i++) {
-			if (myTeam.onSide(theirPlayers.get(i).getLocation()) && theirPlayers.get(i).getLocation().getRow() < getGrid().getNumRows() / 2) {
+			if (myTeam.onSide(theirPlayers.get(i).getLocation()) && theirPlayers.get(i).getLocation().getRow() >= getGrid().getNumRows() / 2) {
 				return theirPlayers.get(i);
 			}
 		}
@@ -89,6 +89,7 @@ public class SouthDefensivePlayer extends AbstractPlayer {
 			}
 		}
 		if (onOurSide()) {
+			System.out.println(whoOnSouthSide());
 			this.setDirection(loc.getDirectionToward(whoOnSouthSide().getLocation()));
 			opp = loc.getAdjacentLocation(loc.getDirectionToward(whoOnSouthSide().getLocation()));
 			if (possibleMoveLocations.indexOf(opp) >= 0) {
