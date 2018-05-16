@@ -35,7 +35,7 @@ public class NorthOffensivePlayer extends AbstractPlayer {
 		Location south = loc.getAdjacentLocation(Location.SOUTH - 45);
 		Location diag1;
 		Location diag2;
-		if(this.getDirection() == Location.EAST || this.getDirection() == Location.NORTHEAST ||this.getDirection() ==  Location.SOUTHEAST) {
+		if (this.getDirection() == Location.EAST || this.getDirection() == Location.NORTHEAST ||this.getDirection() ==  Location.SOUTHEAST) {
 			diag1 = loc.getAdjacentLocation(loc.getDirectionToward(front) + 45);
 			diag2 = loc.getAdjacentLocation(loc.getDirectionToward(front) - 45);
 		}
