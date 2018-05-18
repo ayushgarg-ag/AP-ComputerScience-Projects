@@ -10,9 +10,9 @@ import info.gridworld.actor.Actor;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 
-public class SouthOffensivePlayer extends AbstractPlayer {
+public class AGAKSouthOffensivePlayer extends AbstractPlayer {
 
-	public SouthOffensivePlayer(Location startLocation) {
+	public AGAKSouthOffensivePlayer(Location startLocation) {
 		super(startLocation);
 	}
 
@@ -24,12 +24,20 @@ public class SouthOffensivePlayer extends AbstractPlayer {
 		Flag theirFlag = theirTeam.getFlag();
 		List<Location> possibleMoveLocations = getGrid().getEmptyAdjacentLocations(getLocation()); 
 		Location loc = this.getLocation();
-		if(hasFlag()) {
-			this.setDirection(loc.getDirectionToward(getTeam().getFlag().getLocation()));
+		for (int i = 0; i < theirPlayers.size(); i++) {
+			if (theirPlayers.get(i).hasFlag()) {
+				this.setDirection(loc.getDirectionToward(getTeam().getFlag().getLocation()));
+			}
+			else {
+				this.setDirection(loc.getDirectionToward(theirFlag.getLocation()));
+			}
 		}
-		else {
-			this.setDirection(loc.getDirectionToward(theirFlag.getLocation()));
-		}
+//		if(hasFlag()) {
+//			this.setDirection(loc.getDirectionToward(getTeam().getFlag().getLocation()));
+//		}
+//		else {
+//			this.setDirection(loc.getDirectionToward(theirFlag.getLocation()));
+//		}
 		Location front = loc.getAdjacentLocation(getDirection());
 		Location north = loc.getAdjacentLocation(Location.NORTH - 45);
 		Location south = loc.getAdjacentLocation(Location.SOUTH - 45);

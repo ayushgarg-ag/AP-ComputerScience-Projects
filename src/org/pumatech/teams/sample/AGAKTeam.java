@@ -6,30 +6,30 @@ import org.pumatech.ctf.Team;
 
 import info.gridworld.grid.Location;
 
-public class SampleTeam extends Team {
+public class AGAKTeam extends Team {
 
-	public SampleTeam() {
+	public AGAKTeam() {
 		this(Color.DARK_GRAY);
 	}
 	
-	public SampleTeam(Color color) {
+	public AGAKTeam(Color color) {
 		this("Sample Team", color);
 	}
 	
-	public SampleTeam(String name, Color color) {
+	public AGAKTeam(String name, Color color) {
 		super(name, color);
 
-		addPlayer(new NorthOffensivePlayer(new Location(5, 30)));
-		addPlayer(new NorthOffensivePlayer(new Location(10, 30)));
+		addPlayer(new AGAKNorthOffensivePlayer(new Location(5, 30)));
+		addPlayer(new AGAKNorthOffensivePlayer(new Location(10, 30)));
 		
-		addPlayer(new NorthDefensivePlayer(new Location(15, 30)));
-		addPlayer(new NorthDefensivePlayer(new Location(20, 30)));
+		addPlayer(new AGAKNorthDefensivePlayer(new Location(15, 30)));
+		addPlayer(new AGAKNorthDefensivePlayer(new Location(20, 30)));
 		
-		addPlayer(new SouthDefensivePlayer(new Location(30, 30)));
-		addPlayer(new SouthDefensivePlayer(new Location(35, 30)));
+		addPlayer(new AGAKSouthDefensivePlayer(new Location(30, 30)));
+		addPlayer(new AGAKSouthDefensivePlayer(new Location(35, 30)));
 		
-		addPlayer(new SouthOffensivePlayer(new Location(40, 30)));
-		addPlayer(new SouthOffensivePlayer(new Location(45, 30)));
+		addPlayer(new AGAKSouthOffensivePlayer(new Location(40, 30)));
+		addPlayer(new AGAKSouthOffensivePlayer(new Location(45, 30)));
 		
 		
 //		addPlayer(new BeelinePlayer(new Location(5, 30)));

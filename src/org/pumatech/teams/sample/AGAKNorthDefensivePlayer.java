@@ -11,10 +11,10 @@ import org.pumatech.ctf.Team;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 
-public class SouthDefensivePlayer extends AbstractPlayer {
+public class AGAKNorthDefensivePlayer extends AbstractPlayer {
 	private int i = 0;
 
-	public SouthDefensivePlayer(Location startLocation) {
+	public AGAKNorthDefensivePlayer(Location startLocation) {
 		super(startLocation);
 	}
 
@@ -50,20 +50,20 @@ public class SouthDefensivePlayer extends AbstractPlayer {
 		List<AbstractPlayer> theirPlayers = theirTeam.getPlayers();
 
 		for (int i = 0; i < theirPlayers.size(); i++) {
-			if (myTeam.onSide(theirPlayers.get(i).getLocation()) && theirPlayers.get(i).getLocation().getRow() >= getGrid().getNumRows() / 2) {
+			if (myTeam.onSide(theirPlayers.get(i).getLocation()) && theirPlayers.get(i).getLocation().getRow() < getGrid().getNumRows() / 2) {
 				return true;
 			}
 		}
 		return false;
 	}
 	
-	private AbstractPlayer whoOnSouthSide() {
+	private AbstractPlayer whoOnNorthSide() {
 		Team myTeam = this.getTeam();
 		Team theirTeam = myTeam.getOpposingTeam();
 		List<AbstractPlayer> theirPlayers = theirTeam.getPlayers();
 
 		for (int i = 0; i < theirPlayers.size(); i++) {
-			if (myTeam.onSide(theirPlayers.get(i).getLocation()) && theirPlayers.get(i).getLocation().getRow() >= getGrid().getNumRows() / 2) {
+			if (myTeam.onSide(theirPlayers.get(i).getLocation()) && theirPlayers.get(i).getLocation().getRow() < getGrid().getNumRows() / 2) {
 				return theirPlayers.get(i);
 			}
 		}
@@ -89,9 +89,8 @@ public class SouthDefensivePlayer extends AbstractPlayer {
 			}
 		}
 		if (onOurSide()) {
-			System.out.println(whoOnSouthSide());
-			this.setDirection(loc.getDirectionToward(whoOnSouthSide().getLocation()));
-			opp = loc.getAdjacentLocation(loc.getDirectionToward(whoOnSouthSide().getLocation()));
+			this.setDirection(loc.getDirectionToward(whoOnNorthSide().getLocation()));
+			opp = loc.getAdjacentLocation(loc.getDirectionToward(whoOnNorthSide().getLocation()));
 			if (possibleMoveLocations.indexOf(opp) >= 0) {
 				return opp;
 			}
