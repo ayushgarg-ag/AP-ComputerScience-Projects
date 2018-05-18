@@ -1,4 +1,4 @@
-package org.pumatech.teams.sample;
+package org.pumatech.teams.XLpackage;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -16,6 +16,7 @@ public class AGAKNorthDefensivePlayer extends AbstractPlayer {
 
 	public AGAKNorthDefensivePlayer(Location startLocation) {
 		super(startLocation);
+		this.setColor(Color.WHITE);
 	}
 
 	private boolean theyHaveFlag() {

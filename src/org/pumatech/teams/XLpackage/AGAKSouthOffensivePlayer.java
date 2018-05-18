@@ -1,5 +1,6 @@
-package org.pumatech.teams.sample;
+package org.pumatech.teams.XLpackage;
 
+import java.awt.Color;
 import java.util.List;
 
 import org.pumatech.ctf.AbstractPlayer;
@@ -14,6 +15,8 @@ public class AGAKSouthOffensivePlayer extends AbstractPlayer {
 
 	public AGAKSouthOffensivePlayer(Location startLocation) {
 		super(startLocation);
+		this.setColor(Color.WHITE);
+
 	}
 
 	public Location getMoveLocation() {

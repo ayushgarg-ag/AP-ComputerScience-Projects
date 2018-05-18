@@ -2,7 +2,7 @@ package org.pumatech.ctf;
 
 import java.awt.Color;
 
-import org.pumatech.teams.sample.AGAKTeam;
+import org.pumatech.teams.XLpackage.AGAKTeam;
 
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.ActorWorld;

@@ -1,4 +1,4 @@
-package org.pumatech.teams.sample;
+package org.pumatech.teams.XLpackage;
 
 import org.pumatech.ctf.AbstractPlayer;
 

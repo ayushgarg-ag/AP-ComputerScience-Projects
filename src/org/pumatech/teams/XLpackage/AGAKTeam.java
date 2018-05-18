@@ -1,4 +1,4 @@
-package org.pumatech.teams.sample;
+package org.pumatech.teams.XLpackage;
 
 import java.awt.Color;
 
@@ -9,11 +9,11 @@ import info.gridworld.grid.Location;
 public class AGAKTeam extends Team {
 
 	public AGAKTeam() {
-		this(Color.DARK_GRAY);
+		this(Color.WHITE);
 	}
 	
 	public AGAKTeam(Color color) {
-		this("Sample Team", color);
+		this("AGAK Team", color);
 	}
 	
 	public AGAKTeam(String name, Color color) {

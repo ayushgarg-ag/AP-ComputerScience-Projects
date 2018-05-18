@@ -1,5 +1,6 @@
-package org.pumatech.teams.sample;
+package org.pumatech.teams.XLpackage;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class AGAKNorthOffensivePlayer extends AbstractPlayer {
 
 	public AGAKNorthOffensivePlayer(Location startLocation) {
 		super(startLocation);
+		this.setColor(Color.WHITE);
 //		locs = new ArrayList<Location>();
 	}
 
