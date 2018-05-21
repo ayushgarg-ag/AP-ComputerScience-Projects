@@ -52,20 +52,22 @@ public class AGAKSouthDefensivePlayer extends AbstractPlayer {
 		List<AbstractPlayer> theirPlayers = theirTeam.getPlayers();
 
 		for (int i = 0; i < theirPlayers.size(); i++) {
-			if (myTeam.onSide(theirPlayers.get(i).getLocation()) && theirPlayers.get(i).getLocation().getRow() >= getGrid().getNumRows() / 2) {
+			if (myTeam.onSide(theirPlayers.get(i).getLocation())
+					&& theirPlayers.get(i).getLocation().getRow() >= getGrid().getNumRows() / 2) {
 				return true;
 			}
 		}
 		return false;
 	}
-	
+
 	private AbstractPlayer whoOnSouthSide() {
 		Team myTeam = this.getTeam();
 		Team theirTeam = myTeam.getOpposingTeam();
 		List<AbstractPlayer> theirPlayers = theirTeam.getPlayers();
 
 		for (int i = 0; i < theirPlayers.size(); i++) {
-			if (myTeam.onSide(theirPlayers.get(i).getLocation()) && theirPlayers.get(i).getLocation().getRow() >= getGrid().getNumRows() / 2) {
+			if (myTeam.onSide(theirPlayers.get(i).getLocation())
+					&& theirPlayers.get(i).getLocation().getRow() >= getGrid().getNumRows() / 2) {
 				return theirPlayers.get(i);
 			}
 		}
@@ -98,24 +100,25 @@ public class AGAKSouthDefensivePlayer extends AbstractPlayer {
 				return opp;
 			}
 		}
-			return upDown();
+		return upDown();
 	}
-	
+
 	private boolean southValid() {
 		Location south = this.getLocation().getAdjacentLocation(Location.SOUTH);
 		if ((this.getGrid().isValid(south))) {
 			if ((this.getGrid().get(south) == null)) {
 				return true;
-			}	
+			}
 		}
 		return false;
 	}
+
 	private boolean northValid() {
 		Location north = this.getLocation().getAdjacentLocation(Location.NORTH);
 		if ((this.getGrid().isValid(north))) {
 			if ((this.getGrid().get(north) == null)) {
 				return true;
-			}	
+			}
 		}
 		return false;
 	}
@@ -129,28 +132,12 @@ public class AGAKSouthDefensivePlayer extends AbstractPlayer {
 			if (southValid()) {
 				return south;
 			}
-		}
-		else {
+		} else {
 			i++;
 			if (northValid()) {
 				return north;
 			}
 		}
-//		if (i % 2 == 0) {
-//			i++;
-//			if ((this.getGrid().isValid(south)) && (this.getGrid().get(south) == null)) {
-//				return south;
-//			}
-//		}
-//		else {
-//			Location north = this.getLocation().getAdjacentLocation(Location.NORTH);
-//			i++;
-//			if ((this.getGrid().isValid(north))) {
-//				if (this.getGrid().get(north) == null) {
-//					return north;
-//				}
-//			}
-//		}
 
 		List<Location> possibleMoveLocations = getGrid().getEmptyAdjacentLocations(getLocation());
 		if (possibleMoveLocations.size() == 0)
