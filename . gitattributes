@@ -1,3 +1,2 @@
-* linguist-vendored
 *.java linguist-detectable=true
-src/pixLab/classes/doc/*.html linguist-detectable=false
+*.html linguist-detectable=false
